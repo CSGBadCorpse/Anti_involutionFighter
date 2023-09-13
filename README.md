@@ -1,4 +1,6 @@
 # Anti_involutionFighter
+Unity版本：2020.3.5f1c1
+
 
 Art里放美术资源
 

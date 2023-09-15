@@ -90,3 +90,4 @@ ipch/
 *.iobj
 *.ipdb
 
+*.sln

@@ -16,38 +16,32 @@ public class PlayerData
     private int m_puaValue;
     private string m_name = "N/A";
 
+    //private Dictionary<long, Card> m_cards ;
+    private List<Card> m_cards;
 
-    public int Blood
+    public PlayerData(int bloodMax, int energyMax, int puaValue, string name)
     {
-        get{ return m_bloodCur; }
-    }
-    public int BloodMax
-    {
-        get{ return m_bloodMax; }
-    }
-
-    public int Energy
-    {
-        get{ return m_energyCur; }
-
-    }
-
-    public int EnergyMax
-    {
-        get { return m_energyMax; }
+        m_bloodMax = bloodMax;
+        m_bloodCur = bloodMax;
+        m_energyMax = energyMax;
+        m_energyCur = energyMax;
+        m_puaValue = puaValue;
+        m_name = name;
+        //m_cards = new Dictionary<long,Card>();
+        m_cards = new List<Card>();
     }
 
-    public int PuaValue
-    {
-        get{ return m_puaValue; }
-    }
+    #region 属性
+    public int Blood{ get{ return m_bloodCur; } }
+    public int BloodMax{ get{ return m_bloodMax; } }
+    public int Energy{ get{ return m_energyCur; } }
+    public int EnergyMax{ get { return m_energyMax; } }
+    public int PuaValue{ get{ return m_puaValue; } }
+    public string Name{ get{ return m_name; } }
+    #endregion
 
-    
-    public string Name
-    {
-        get{ return m_name; }       
-    }
 
+    #region 方法
 
     public void GetHit(int damage)//受伤
     {
@@ -78,13 +72,11 @@ public class PlayerData
         Decrease(ref m_puaValue,puaDecreaseValue);
     }
 
-
     private void Increase(ref int dataCur, int amount)//无上限增加
     {
         int a=-1;
         Increase(ref dataCur, ref a, amount);
     }
-
     private void Increase(ref int dataCur, ref int dataMax, int amount)//有上限
     {
         if (dataMax < 0)
@@ -115,30 +107,27 @@ public class PlayerData
         }
     }
 
-
-
-    public void SetBlood(int bloodMax)
+    public bool IsCardEmpty()
     {
-        m_bloodMax = bloodMax;
-        m_bloodCur = m_bloodMax;
+        return m_cards.Count == 0;
+    }
+    public void AddCard(Card card)
+    {
+        this.m_cards.Add(card);
+    }
+    //public void RemoveCard(Card card)
+    //{
+    //    this.m_cards.Remove(card);
+    //}
+    public void UpdateCards(List<Card> cards)
+    {
+        m_cards=cards;
+    }
+    public Card GetCard(int index)
+    {
+        return this.m_cards[index];
     }
 
-    public void SetEnergy(int powerMax)
-    {
-        m_energyMax = powerMax;
-        m_energyCur = m_energyMax;
-    }
-
-    public void SetPuaValue(int puaValue)
-    {
-        m_puaValue = puaValue;
-    }
-
-    public void SetName(string name)
-    {
-        m_name = name;
-    }
-
-    
-
+    #endregion
 }
+ 

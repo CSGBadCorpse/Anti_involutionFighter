@@ -3,20 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Player : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     [SerializeField]
     private PlayerData playerData;//连接scriptableObject获取数据
+    //这里写playerAnimation和spineAssetData
 
     [SerializeField]
     private Text nameText;
+
     [SerializeField]
     private GameObject bloodUI;
+    Image bloodValue;
+    Text bloodText;
+    
     [SerializeField] 
     private GameObject energyUI;
+    Image energyValue;
+    Text energyText;
+
     [SerializeField]
     private GameObject puaUI;
-    
+    Text puaText;
+
+    [Header("初始化数据")]
     [SerializeField]
     private new string name;
     [SerializeField]
@@ -25,39 +35,28 @@ public class Player : MonoBehaviour
     private int energyMax;
     [SerializeField]
     private int puaValue;
+    [SerializeField]
+    private List<GameObject> cards;//暂时做成开放
 
-    Image bloodValue;
-    Text bloodText;
-
-    Image energyValue;
-    Text energyText;
-
-    Text puaText;
     private void Start()
     {
-        playerData = new PlayerData();
-        playerData.SetName(name);
-
-        playerData.SetBlood(bloodMax);//暂时写死
-
-        playerData.SetEnergy(energyMax);
-
-        playerData.SetPuaValue(puaValue);
+        playerData = new PlayerData(bloodMax, energyMax, puaValue, name);
 
         nameText.text = playerData.Name;
 
         bloodValue = bloodUI.transform.GetChild(0).GetComponentInChildren<Image>();
-        bloodValue.fillAmount = (float)playerData.Blood/ playerData.BloodMax;
         bloodText = bloodUI.transform.GetComponentInChildren<Text>();
-        bloodText.text = playerData.Blood.ToString()+"/"+ playerData.BloodMax.ToString();
 
         energyValue = energyUI.transform.GetChild(0).GetComponent<Image>();
-        energyValue.fillAmount = (float)playerData.Energy/ playerData.EnergyMax;
         energyText = energyUI.GetComponentInChildren<Text>();
-        energyText.text = playerData.Energy.ToString()+"/"+playerData.EnergyMax.ToString();
 
         puaText = puaUI.GetComponentInChildren<Text>();
-        puaText.text = "X"+playerData.PuaValue.ToString();
+
+        for(int i=0;i < cards.Count; i++)
+        {
+            playerData.AddCard(cards[i].GetComponent<Card>());
+        }
+        UpdateUI();
     }
     private void Update()
     {
@@ -69,6 +68,8 @@ public class Player : MonoBehaviour
             
             Debug.Log(playerData.Blood);
             Debug.Log(playerData.PuaValue);
+
+            
         }
         if (Input.GetKeyDown(KeyCode.I))
         {
@@ -95,5 +96,13 @@ public class Player : MonoBehaviour
 
         puaText.text = "X" + playerData.PuaValue.ToString();
 
+    }
+    public bool IsCardEmpty()
+    {
+        return playerData.IsCardEmpty();
+    }
+    public Card DrawCard(int index)
+    {
+        return playerData.GetCard(index);
     }
 }

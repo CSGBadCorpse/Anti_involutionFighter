@@ -1,9 +1,17 @@
 ﻿using JetBrains.Annotations;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
+public enum CardType
+{
+    Damage,
+    Recover,
+}
+
 
 public class Card: MonoBehaviour
 {
@@ -16,10 +24,13 @@ public class Card: MonoBehaviour
     [SerializeField]
     protected int cost;
 
+    [SerializeField] 
+    protected CardType cardType;
+
     [SerializeField]
-    private SpriteRenderer frontImage;
+    private Image frontImage;
     [SerializeField]
-    private SpriteRenderer backImage;
+    private Image backImage;
 
     private bool turnState = false;//是否翻面
     private bool showState = false;

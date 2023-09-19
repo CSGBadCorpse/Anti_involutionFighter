@@ -52,10 +52,14 @@ public class PlayerController : MonoBehaviour
 
         puaText = puaUI.GetComponentInChildren<Text>();
 
-        for(int i=0;i < cards.Count; i++)
+        if(cards.Count > 0)
         {
-            playerData.AddCard(cards[i].GetComponent<Card>());
+            for (int i = 0; i < cards.Count; i++)
+            {
+                playerData.AddCard(cards[i].GetComponent<Card>());
+            }
         }
+        
         UpdateUI();
     }
     private void Update()

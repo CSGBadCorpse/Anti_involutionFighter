@@ -1,7 +1,18 @@
-﻿using System.Collections;
+﻿using Newtonsoft.Json;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.PackageManager;
 using UnityEngine;
+
+//public class Test
+//{
+//    [JsonProperty("o")]
+//    string o = "123";
+//    [JsonProperty("p")]
+//    string p = "456";
+//    public Test(string o, string p) { this.o = o; this.p = p; }
+//}
+
 
 public class BattleLoop : MonoBehaviour
 {
@@ -16,11 +27,21 @@ public class BattleLoop : MonoBehaviour
     {
         isSelf = true;//暂定，根据需求改
         turns = 0;
+        List<Card> list = new List<Card>();
+        DamageCard card = new DamageCard();
+        RecoverCard recoverCard = new RecoverCard();
+        list.Add(card);
+        list.Add(recoverCard);
+        Debug.Log(list[0].ToString());
+
     }
 
     private void Update()
     {
-        if(playerLeft.IsCardEmpty() && playerRight.IsCardEmpty())
+        //Test a = new Test("zzz", "zzz");
+        //string b = JsonConvert.SerializeObject(a, Formatting.Indented);
+        //Debug.Log(b);
+        if (playerLeft.IsCardEmpty() && playerRight.IsCardEmpty())
         {
             //Debug.LogError("对局失败，双方卡牌为空");
         }

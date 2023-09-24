@@ -35,8 +35,9 @@ public class PlayerController : MonoBehaviour
     private int energyMax;
     [SerializeField]
     private int puaValue;
+
     [SerializeField]
-    private List<GameObject> cards;//暂时做成开放
+    private List<Card> cards;//暂时做成开放
 
     private void Start()
     {

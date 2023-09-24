@@ -28,6 +28,11 @@ public class Card: MonoBehaviour
     protected CardType cardType;
 
     [SerializeField]
+    private float damage;
+    [SerializeField]
+    private float recover;
+
+    [SerializeField]
     private Image frontImage;
     [SerializeField]
     private Image backImage;
@@ -71,5 +76,6 @@ public class Card: MonoBehaviour
     {
         showState = false;
     }
+   
     #endregion
 }

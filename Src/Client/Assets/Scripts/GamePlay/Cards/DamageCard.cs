@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class DamageCard : Card
 {
-    [SerializeField]
-    private int damage;
+    //[SerializeField]
+    //private int damage;
 }

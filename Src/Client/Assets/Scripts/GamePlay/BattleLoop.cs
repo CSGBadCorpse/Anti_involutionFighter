@@ -88,6 +88,7 @@ public class BattleLoop : MonoBehaviour
             case PlayerTurnState.Draw:
                 //dataProcess
                 Card card = playerAction.DrawCard(turns);
+
                 //if(card.)
                 //animation
                 break;

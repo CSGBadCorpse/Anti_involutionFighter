@@ -38,7 +38,7 @@
 ExportedObj/
 .consulo/
 *.csproj
-*.unityproj
+# *.unityproj
 *.sln
 *.suo
 *.tmp
@@ -63,7 +63,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.aab
-*.unitypackage
+# *.unitypackage
 *.app
 
 # Crashlytics generated file
@@ -86,17 +86,14 @@ ipch/
 *.o
 *.obj
 *.idb
-*.pdb
 *.d
 *.ilk
 *.tlog
-*.d
 *.lastbuildstate
 *.iobj
 *.ipdb
-*.sln
 
 # Odin setting
-/Assets/Plugins/Sirenix/Assemblies/AOT/*
-/Assets/Plugins/Sirenix/Demos/*
-!/Assets/Plugins/Sirenix/Demos/*.unitypackage
+Assets/Plugins/Sirenix/Assemblies/AOT/*
+Assets/Plugins/Sirenix/Demos/*
+!Assets/Plugins/Sirenix/Demos/*.unitypackage

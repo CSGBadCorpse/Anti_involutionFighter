@@ -9,7 +9,7 @@
 [Bb]uilds/
 [Ll]ogs/
 [Uu]ser[Ss]ettings/
-.idea/
+
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
@@ -28,6 +28,8 @@
 .vs/
 #Visual Studio Code cache directory
 .vscode/
+# Ideal Rider
+.idea/
 
 # Gradle cache directory
 .gradle/
@@ -92,5 +94,9 @@ ipch/
 *.lastbuildstate
 *.iobj
 *.ipdb
-
 *.sln
+
+# Odin setting
+/Assets/Plugins/Sirenix/Assemblies/AOT/*
+/Assets/Plugins/Sirenix/Demos/*
+!/Assets/Plugins/Sirenix/Demos/*.unitypackage

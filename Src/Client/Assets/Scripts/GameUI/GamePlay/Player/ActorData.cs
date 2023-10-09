@@ -7,7 +7,7 @@ using GameUI.GamePlay.Cards;
 namespace GameUI.GamePlay
 {
     
-public class PlayerData
+public class ActorData
 {
     private int _bloodMax;
     [SerializeField]
@@ -25,7 +25,7 @@ public class PlayerData
     private Dictionary<string,BuffData> _buffDataList;
     private List<Card> _cards;
 
-    public PlayerData(int bloodMax, int energyMax, int puaValue, string name, int deffense = 0)
+    public ActorData(int bloodMax, int energyMax, int puaValue, string name, int deffense = 0)
     {
         _bloodMax = bloodMax;
         _bloodCur = bloodMax;
@@ -34,7 +34,6 @@ public class PlayerData
         _puaValue = puaValue;
         _deffense = deffense;
         _name = name;
-        //m_cards = new Dictionary<long,Card>();
         _cards = new List<Card>();
     }
 

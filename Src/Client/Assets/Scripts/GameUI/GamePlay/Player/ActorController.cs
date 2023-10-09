@@ -6,14 +6,14 @@ using UnityEngine.UI;
 namespace GameUI.GamePlay
 {
             
-    public class PlayerController :MonoBehaviour
+    public class ActorController :MonoBehaviour
     {
         [SerializeField]
-        public PlayerData playerData;//连接scriptableObject获取数据
+        public ActorData playerData;//连接scriptableObject获取数据
         //这里写playerAnimation和spineAssetData
 
         [SerializeField]
-        private Text nameText;
+        private Text _nameText;
 
         [SerializeField]
         private GameObject bloodUI;
@@ -21,7 +21,7 @@ namespace GameUI.GamePlay
         private Text _bloodText;
         
         [SerializeField] 
-        private GameObject energyUI;
+        private GameObject _energyUI;
         private Image _energyValue;
         private Text _energyText;
 
@@ -44,15 +44,15 @@ namespace GameUI.GamePlay
 
         private void Start()
         {
-            playerData = new PlayerData(bloodMax, energyMax, puaValue, name);
+            playerData = new ActorData(bloodMax, energyMax, puaValue, name);
 
-            nameText.text = playerData.Name;
+            _nameText.text = playerData.Name;
 
             _bloodValue = bloodUI.transform.GetChild(0).GetComponentInChildren<Image>();
             _bloodText = bloodUI.transform.GetComponentInChildren<Text>();
 
-            _energyValue = energyUI.transform.GetChild(0).GetComponent<Image>();
-            _energyText = energyUI.GetComponentInChildren<Text>();
+            _energyValue = _energyUI.transform.GetChild(0).GetComponent<Image>();
+            _energyText = _energyUI.GetComponentInChildren<Text>();
 
             _puaText = puaUI.GetComponentInChildren<Text>();
 
@@ -111,29 +111,30 @@ namespace GameUI.GamePlay
         {
             return playerData.GetCard(index);
         }
-        public int ProcessCard(Card actionCard)
-        {
-            if (actionCard is DamageCard)
-            {
+        //public int ProcessCard(Card actionCard)
+        //{
+        //    actionCard.ProcessCardAffect(this);
+        //    if (actionCard is DamageCard)
+        //    {
                 
-            }
-            // if (actionCard.cardType== CardType.Damage)
-            // {
-            //     GetHit(actionCard.Damage);
-            // }
-            // else if (actionCard.cardType == CardType.Recover)
-            // {
-            //     Recover(actionCard.Recover);
-            // }
-            // CostEnergy(actionCard.Cost);
-            // PuaIncrease(2);
-            // UpdateUI();
-            // if (actionCard.IsCoutinued)
-            // {
-            //     return GamePlayUtil.DontTurn;
-            // }        
-            return GamePlayUtil.NextTurn;
-        }
+        //    }
+        //    // if (actionCard.cardType== CardType.Damage)
+        //    // {
+        //    //     GetHit(actionCard.Damage);
+        //    // }
+        //    // else if (actionCard.cardType == CardType.Recover)
+        //    // {
+        //    //     Recover(actionCard.Recover);
+        //    // }
+        //    // CostEnergy(actionCard.Cost);
+        //    // PuaIncrease(2);
+        //    // UpdateUI();
+        //    // if (actionCard.IsCoutinued)
+        //    // {
+        //    //     return GamePlayUtil.DontTurn;
+        //    // }        
+        //    return GamePlayUtil.NextTurn;
+        //}
 
         private void GetHit(int value)
         {

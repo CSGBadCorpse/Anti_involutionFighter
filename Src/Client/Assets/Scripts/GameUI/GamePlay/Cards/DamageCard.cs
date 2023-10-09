@@ -6,10 +6,17 @@ namespace GameUI.GamePlay.Cards
         private int _damage;
         public DamageCard(ulong id, string name, string description, int cost,int damage) :base(id, name, description, cost)
         {
-            this.id = id;
-            this.cardName = name;
-            this.cardDescription = description;
-            this.cost = cost;
+            this._id = id;
+            this._cardName = name;
+            this._cardDescription = description;
+            this._cost = cost;
+            this._damage = damage;
+        }
+        public override int ProcessCardEffect(ActorController actionActor,ActorController reciveActor) 
+        {
+            
+            return GamePlayUtil.Next;
+
         }
     }    
 }

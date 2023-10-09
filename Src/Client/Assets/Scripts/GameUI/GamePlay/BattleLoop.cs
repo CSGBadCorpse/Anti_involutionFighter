@@ -27,9 +27,9 @@ namespace GameUI.GamePlay
     public class BattleLoop : MonoBehaviour
     {
         [SerializeField]
-        private PlayerController playerLeft;//己方
+        private ActorController playerLeft;//己方
         [SerializeField] 
-        private PlayerController playerRight;//敌方
+        private ActorController playerRight;//敌方
 
         private bool _isSelf;//是否为己方回合
         private int _turns;
@@ -104,8 +104,8 @@ namespace GameUI.GamePlay
 
         }
 
-        private void PlayerTurn(PlayerController playerAction,//行动方
-                                PlayerController playerReceiving)//被动方
+        private void PlayerTurn(ActorController playerAction,//行动方
+                                ActorController playerReceiving)//被动方
         {
             switch (_playerTurnState)
             {
@@ -124,15 +124,15 @@ namespace GameUI.GamePlay
                 case PlayerTurnState.CardAction:
                     Debug.Log("卡牌效果");
 
-                    int result = playerReceiving.ProcessCard(_actionCard);
+                    int result = _actionCard.ProcessCardEffect(playerAction,playerReceiving);
                     //animation
                     //changeState
                     Debug.Log("结果："+result);
-                    if(result == GamePlayUtil.NextTurn)
+                    if(result == GamePlayUtil.Next)
                     {
                         _playerTurnState = PlayerTurnState.End;
                     }
-                    else if(result == GamePlayUtil.DontTurn)
+                    else if(result == GamePlayUtil.Hold)
                     {
                         _playerTurnState = PlayerTurnState.Draw;
                     }

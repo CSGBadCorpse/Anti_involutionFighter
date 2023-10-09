@@ -14,10 +14,10 @@ namespace GameUI.GamePlay.Cards
 {
     public enum CardType
     {
-        Damage,
-        Recover,
-        Pass,
-
+        Common,//通用
+        Programmer,//程序员
+        Art,//美术
+        MasterMind,//策划
     }
     #if UNITY_EDITOR //inspector面板显示
     // [CustomEditor(typeof(Card))]
@@ -65,22 +65,22 @@ namespace GameUI.GamePlay.Cards
     // }
     #endif
 
-    public partial class  Card :MonoBehaviour
+    public abstract class  Card :MonoBehaviour
     {
         [SerializeField]
-        protected ulong id;
+        protected ulong _id;
 
         [SerializeField]
         [Header("卡牌名称")]
-        protected string cardName = "N/A";
+        protected string _cardName = "N/A";
 
         [SerializeField]
         [Header("卡牌描述")]
-        protected string cardDescription = "N/A";
+        protected string _cardDescription = "N/A";
 
         [SerializeField]
         [Header("卡牌消耗点数")]
-        protected int cost;
+        protected int _cost;
         //
         // [SerializeField]
         // [Header("卡牌类型")]
@@ -99,21 +99,21 @@ namespace GameUI.GamePlay.Cards
 
         [SerializeField]
         [Header("卡牌正面图")]
-        private Image frontImage;
+        private Image _frontImage;
         [SerializeField]
         [Header("卡牌反面图")]
-        private Image backImage;
+        private Image _backImage;
 
-        private bool turnState = false;//是否翻面
-        private bool showState = false;
+        private bool _turnState = false;//是否翻面
+        private bool _showState = false;
 
         public Card(ulong id, string name, string description, int cost)
         {
-            this.id = id;
-            this.cardName = name;
+            this._id = id;
+            this._cardName = name;
             // this.cardType = cardType;
-            this.cardDescription = description;
-            this.cost = cost;
+            this._cardDescription = description;
+            this._cost = cost;
             // // this.damage = damage;
             // // this.recover = recover;
             // // this.isCoutinued = isCountinued;
@@ -126,10 +126,10 @@ namespace GameUI.GamePlay.Cards
 
 
         #region 属性
-        public ulong Id{ get { return id; } }
-        public string Name{get { return cardName; } }
-        public string Description{ get { return cardDescription; } }
-        public int Cost{ get { return cost; } }
+        public ulong Id{ get { return _id; } }
+        public string Name{get { return _cardName; } }
+        public string Description{ get { return _cardDescription; } }
+        public int Cost{ get { return _cost; } }
         // public int Damage{ get { return damage; } }
         // public int Recover{ get { return recover; } }
         // public bool IsCoutinued { get {  return isCoutinued; } }
@@ -138,22 +138,26 @@ namespace GameUI.GamePlay.Cards
         #region 方法
         public void TurnFront()
         {
-            turnState = true;
+            _turnState = true;
+            //animation
         }
         public void TurnBack()
         {
-            turnState = false;
+            _turnState = false;
+            //animation
         }
 
         public virtual void Show()
         {
-            showState = true;
+            _showState = true;
         }
         public virtual void Hide()
         {
-            showState = false;
+            _showState = false;
         }
-       
+        public abstract int ProcessCardEffect(ActorController actionActor, ActorController reciveActor);
+        
+
         #endregion
     }
 }

@@ -1,26 +1,21 @@
-using UnityEngine;
-
-namespace GameUI.GamePlay.Cards
+﻿namespace GameUI.GamePlay.Cards
 {
     /// <summary>
-    /// 恢复牌
+    /// 控制牌
     /// </summary>
-    public class RecoverCard : Card
+    public class ControllCard:Card
     {
-        private int _recover;
-        public RecoverCard(ulong id, string name, string description, int cost, int recover) : base(id, name, description, cost)
+        public ControllCard(ulong id, string name, string description, int cost) : base(id, name, description, cost)
         {
             this._id = id;
             this._cardName = name;
             this._cardDescription = description;
             this._cost = cost;
-            this._recover = recover;
         }
+
         public override int ProcessCardEffect(ActorController actionActor, ActorController reciveActor)
         {
-            
             return GamePlayUtil.Next;
-
         }
     }
 }

@@ -166,6 +166,11 @@ namespace GameUI.GamePlay
         {
             playerData.AddCard(newCard);
         }
+
+        public void GainBuff(Buff buff)
+        {
+            playerData.GainBuff(buff);
+        }
     }
 
 }

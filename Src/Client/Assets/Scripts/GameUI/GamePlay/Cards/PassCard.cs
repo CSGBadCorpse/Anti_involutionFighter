@@ -1,10 +1,14 @@
 using UnityEngine;
 namespace GameUI.GamePlay.Cards
 {
-    public class HoldCard : Card
+    /// <summary>
+    /// 过卡牌，再抽一张卡
+    /// </summary>
+    public class PassCard : Card
     {
+        [SerializeField]
         private int _damage;
-        public HoldCard(ulong id, string name, string description, int cost, int damage) : base(id, name, description, cost)
+        public PassCard(ulong id, string name, string description, int cost, int damage) : base(id, name, description, cost)
         {
             this._id = id;
             this._cardName = name;

@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 namespace GameUI.GamePlay.Cards
 {
+    /// <summary>
+    /// 伤害牌
+    /// </summary>
     public class DamageCard :  Card
     {
         private int _damage;
@@ -20,3 +23,26 @@ namespace GameUI.GamePlay.Cards
         }
     }    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

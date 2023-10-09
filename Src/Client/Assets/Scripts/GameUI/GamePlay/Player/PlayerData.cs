@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-
+using GameUI.GamePlay.Cards;
 namespace GameUI.GamePlay
 {
     
@@ -16,33 +16,37 @@ public class PlayerData
     private int _energyMax;
     private int _energyCur;
 
+    private int _deffense;
 
     private int _puaValue;
     private string _name = "N/A";
 
     //private Dictionary<long, Card> m_cards ;
+    private Dictionary<string,BuffData> _buffDataList;
     private List<Card> _cards;
 
-    public PlayerData(int bloodMax, int energyMax, int puaValue, string name)
+    public PlayerData(int bloodMax, int energyMax, int puaValue, string name, int deffense = 0)
     {
         _bloodMax = bloodMax;
         _bloodCur = bloodMax;
         _energyMax = energyMax;
         _energyCur = energyMax;
         _puaValue = puaValue;
+        _deffense = deffense;
         _name = name;
         //m_cards = new Dictionary<long,Card>();
         _cards = new List<Card>();
     }
 
     #region 属性
-
-    public int Blood => _bloodCur;
     public int BloodMax => _bloodMax;
-    public int Energy => _energyCur; 
+    public int EnergyCur => _energyCur; 
     public int EnergyMax => _energyMax; 
     public int PuaValue => _puaValue; 
-    public string Name =>  _name; 
+    public string Name =>  _name;
+    public int Deffense => _deffense;
+    public int BloodCur => _bloodCur;
+
     #endregion
 
 

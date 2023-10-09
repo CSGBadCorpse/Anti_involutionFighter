@@ -21,7 +21,7 @@ namespace YIUIFramework
         public const string UINamespace = "Fighter"; //所有生成文件的命名空间
 
         [LabelText("YIUI项目资源路径")]
-        public const string UIProjectResPath = "Assets/Resources/" + UIProjectName; //玩家的预设/图片等资源存放的地方
+        public const string UIProjectResPath = "Assets/GameRes/" + UIProjectName; //玩家的预设/图片等资源存放的地方
 
         [LabelText("YIUI项目脚本路径")]
         public const string UIGenerationPath = "Assets/Scripts/YIUIGeneration"; //自动生成的代码

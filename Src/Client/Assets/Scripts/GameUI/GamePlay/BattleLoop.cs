@@ -48,10 +48,12 @@ namespace GameUI.GamePlay
             //list.Add(card);
             //list.Add(recoverCard);
             //Debug.Log(list[0].ToString());
+            //0逻辑、1.内伤、2.护盾
             playerLeft.AddCard(new PassCard(0, "我有个需求",  "策划说我有个需求", 1, 2));
             playerLeft.AddCard(new BuffCard(1,"我需求改了","策划说我需求改了",2,3,1));
             playerLeft.AddCard(new BuffCard(2,"这需求就麻烦你了~","策划说这需求就麻烦你了",3,5,2));
             playerLeft.AddCard(new BuffCard(3,"这是什么**需求","策划说这是什么**需求",4,5,1));
+            // playerLeft.AddCard(new BuffCard(4,"我需求发你了哦~",""));
             // playerRight.AddCard(new BuffCard(1, "今天是DeadLine",  "策划说今天是deadline", 2,2));
             
         }

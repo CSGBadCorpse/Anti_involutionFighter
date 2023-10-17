@@ -1,0 +1,29 @@
+ManifestFileVersion: 0
+CRC: 1304114623
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 86e8c17d7bf7547a6c754a4d0c594046
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 4df8c69f2c8a6ad9e3cbf82bb83e4dc3
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_10.png
+- Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_03.png
+- Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_06.png
+- Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_04.png
+- Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_02.png
+- Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_07.png
+- Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_08.png
+- Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_05.png
+- Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_11.png
+- Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_01.png
+- Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_09.png
+Dependencies: []

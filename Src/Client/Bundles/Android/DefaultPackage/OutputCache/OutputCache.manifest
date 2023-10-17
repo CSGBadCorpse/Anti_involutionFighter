@@ -1,0 +1,54 @@
+ManifestFileVersion: 0
+CRC: 2081350880
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: defaultpackage_assets_gameres_antiinvolutionfighter_battle_prefabs.bundle
+      Dependencies:
+        Dependency_0: defaultpackage_share_assets_gameassets_battlepanel_sprites_icon_skill.bundle
+        Dependency_1: defaultpackage_share_assets_gameassets_battlepanel_sprites_system_ui_zhandou.bundle
+        Dependency_2: defaultpackage_share_assets_gameassets_battlepanel_sprites_icon_touxiang.bundle
+        Dependency_3: defaultpackage_share_assets_gameassets_battlepanel_sprites_scene.bundle
+        Dependency_4: defaultpackage_share_assets_gameassets_battlepanel_sprites_icon_zhuangbei.bundle
+        Dependency_5: defaultpackage_share_assets_gameassets_battlepanel_sprites_kapai.bundle
+        Dependency_6: defaultpackage_share_assets_gameassets_battlepanel_sprites_common.bundle
+    Info_1:
+      Name: defaultpackage_assets_gameres_antiinvolutionfighter_battle_source.bundle
+      Dependencies:
+        Dependency_0: defaultpackage_share_assets_gameassets_battlepanel_sprites_icon_skill.bundle
+        Dependency_1: defaultpackage_share_assets_gameassets_battlepanel_sprites_system_ui_zhandou.bundle
+        Dependency_2: defaultpackage_share_assets_gameassets_battlepanel_sprites_icon_touxiang.bundle
+        Dependency_3: defaultpackage_share_assets_gameassets_battlepanel_sprites_scene.bundle
+        Dependency_4: defaultpackage_share_assets_gameassets_battlepanel_sprites_icon_zhuangbei.bundle
+        Dependency_5: defaultpackage_share_assets_gameassets_battlepanel_sprites_kapai.bundle
+        Dependency_6: defaultpackage_share_assets_gameassets_battlepanel_sprites_common.bundle
+    Info_2:
+      Name: defaultpackage_assets_gameres_antiinvolutionfighter_common_prefabs.bundle
+      Dependencies: {}
+    Info_3:
+      Name: defaultpackage_assets_gameres_antiinvolutionfighter_common_source.bundle
+      Dependencies: {}
+    Info_4:
+      Name: defaultpackage_assets_gameres_reddot.bundle
+      Dependencies: {}
+    Info_5:
+      Name: defaultpackage_share_assets_gameassets_battlepanel_sprites_icon_skill.bundle
+      Dependencies: {}
+    Info_6:
+      Name: defaultpackage_share_assets_gameassets_battlepanel_sprites_system_ui_zhandou.bundle
+      Dependencies: {}
+    Info_7:
+      Name: defaultpackage_share_assets_gameassets_battlepanel_sprites_icon_touxiang.bundle
+      Dependencies: {}
+    Info_8:
+      Name: defaultpackage_share_assets_gameassets_battlepanel_sprites_scene.bundle
+      Dependencies: {}
+    Info_9:
+      Name: defaultpackage_share_assets_gameassets_battlepanel_sprites_icon_zhuangbei.bundle
+      Dependencies: {}
+    Info_10:
+      Name: defaultpackage_share_assets_gameassets_battlepanel_sprites_kapai.bundle
+      Dependencies: {}
+    Info_11:
+      Name: defaultpackage_share_assets_gameassets_battlepanel_sprites_common.bundle
+      Dependencies: {}

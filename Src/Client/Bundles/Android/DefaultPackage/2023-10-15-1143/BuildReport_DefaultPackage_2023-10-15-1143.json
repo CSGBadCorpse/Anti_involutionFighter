@@ -1,0 +1,397 @@
+{
+    "Summary": {
+        "YooVersion": "1.5.1",
+        "UnityVersion": "2020.3.5f1c1",
+        "BuildDate": "2023/10/15 19:03:38",
+        "BuildSeconds": 7,
+        "BuildTarget": 13,
+        "BuildPipeline": 0,
+        "BuildMode": 0,
+        "BuildPackageName": "DefaultPackage",
+        "BuildPackageVersion": "2023-10-15-1143",
+        "EnableAddressable": true,
+        "LocationToLower": false,
+        "IncludeAssetGUID": false,
+        "UniqueBundleName": true,
+        "SharedPackRuleClassName": "YooAsset.Editor.ZeroRedundancySharedPackRule",
+        "EncryptionServicesClassName": "YooAsset.Editor.EncryptionNone",
+        "OutputNameStyle": 1,
+        "CompressOption": 2,
+        "DisableWriteTypeTree": false,
+        "IgnoreTypeTreeChanges": true,
+        "AssetFileTotalCount": 28,
+        "MainAssetTotalCount": 7,
+        "AllBundleTotalCount": 12,
+        "AllBundleTotalSize": 924262,
+        "EncryptedBundleTotalCount": 0,
+        "EncryptedBundleTotalSize": 0,
+        "RawBundleTotalCount": 0,
+        "RawBundleTotalSize": 0
+    },
+    "AssetInfos": [
+        {
+            "Address": "Battle",
+            "AssetPath": "Assets/GameRes/AntiInvolutionFighter/Battle/Prefabs/Battle.prefab",
+            "AssetGUID": "77c5e30ed8a99724f91d28d1c2ce5655",
+            "AssetTags": [],
+            "MainBundleName": "defaultpackage_assets_gameres_antiinvolutionfighter_battle_prefabs.bundle",
+            "MainBundleSize": 41604,
+            "DependBundles": [
+                "defaultpackage_share_assets_gameassets_battlepanel_sprites_icon_skill.bundle",
+                "defaultpackage_share_assets_gameassets_battlepanel_sprites_system_ui_zhandou.bundle",
+                "defaultpackage_share_assets_gameassets_battlepanel_sprites_icon_touxiang.bundle",
+                "defaultpackage_share_assets_gameassets_battlepanel_sprites_scene.bundle",
+                "defaultpackage_share_assets_gameassets_battlepanel_sprites_icon_zhuangbei.bundle",
+                "defaultpackage_share_assets_gameassets_battlepanel_sprites_kapai.bundle",
+                "defaultpackage_share_assets_gameassets_battlepanel_sprites_common.bundle"
+            ],
+            "DependAssets": [
+                "Assets/GameAssets/BattlePanel/Sprites/icon/skill/ui_skill_01.png",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_10.png",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_03.png",
+                "Assets/GameAssets/BattlePanel/Sprites/icon/touxiang/ui_touxiang_01.png",
+                "Assets/Resources/BattlePanel/Prefabs/RoleInfoGroup.prefab",
+                "Assets/GameAssets/BattlePanel/Sprites/scene/ui_scene_zhandou_01.png",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_06.png",
+                "Assets/GameAssets/BattlePanel/Sprites/icon/zhuangbei/ui_zhuangbei_01.png",
+                "Assets/GameAssets/BattlePanel/Sprites/kapai/ui_kapai_kapaimingcheng.png",
+                "Assets/GameAssets/BattlePanel/Sprites/common/ui_common_03.png",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_04.png",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_02.png",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_07.png",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_08.png",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_05.png",
+                "Assets/GameAssets/BattlePanel/Sprites/common/ui_common_01.png",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_11.png",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_01.png",
+                "Assets/Resources/BattlePanel/Prefabs/CardItem.prefab",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_09.png",
+                "Assets/GameAssets/BattlePanel/Sprites/common/ui_common_02.png"
+            ]
+        },
+        {
+            "Address": "BattlePanel",
+            "AssetPath": "Assets/GameRes/AntiInvolutionFighter/Battle/Prefabs/BattlePanel.prefab",
+            "AssetGUID": "ad9afd6ed50838442ad5a967b4443f46",
+            "AssetTags": [],
+            "MainBundleName": "defaultpackage_assets_gameres_antiinvolutionfighter_battle_prefabs.bundle",
+            "MainBundleSize": 41604,
+            "DependBundles": [
+                "defaultpackage_share_assets_gameassets_battlepanel_sprites_system_ui_zhandou.bundle",
+                "defaultpackage_share_assets_gameassets_battlepanel_sprites_icon_skill.bundle",
+                "defaultpackage_share_assets_gameassets_battlepanel_sprites_icon_touxiang.bundle",
+                "defaultpackage_share_assets_gameassets_battlepanel_sprites_scene.bundle",
+                "defaultpackage_share_assets_gameassets_battlepanel_sprites_icon_zhuangbei.bundle",
+                "defaultpackage_share_assets_gameassets_battlepanel_sprites_kapai.bundle",
+                "defaultpackage_share_assets_gameassets_battlepanel_sprites_common.bundle"
+            ],
+            "DependAssets": [
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_10.png",
+                "Assets/GameAssets/BattlePanel/Sprites/icon/skill/ui_skill_01.png",
+                "Assets/GameAssets/BattlePanel/Sprites/icon/touxiang/ui_touxiang_01.png",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_03.png",
+                "Assets/GameAssets/BattlePanel/Sprites/scene/ui_scene_zhandou_01.png",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_06.png",
+                "Assets/GameAssets/BattlePanel/Sprites/icon/zhuangbei/ui_zhuangbei_01.png",
+                "Assets/GameAssets/BattlePanel/Sprites/kapai/ui_kapai_kapaimingcheng.png",
+                "Assets/GameAssets/BattlePanel/Sprites/common/ui_common_03.png",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_04.png",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_02.png",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_08.png",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_05.png",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_07.png",
+                "Assets/GameAssets/BattlePanel/Sprites/common/ui_common_01.png",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_11.png",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_01.png",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_09.png",
+                "Assets/GameAssets/BattlePanel/Sprites/common/ui_common_02.png"
+            ]
+        },
+        {
+            "Address": "BattlePanelSource",
+            "AssetPath": "Assets/GameRes/AntiInvolutionFighter/Battle/Source/BattlePanelSource.prefab",
+            "AssetGUID": "923c42f156ff9e140a9a9aef536f40f4",
+            "AssetTags": [],
+            "MainBundleName": "defaultpackage_assets_gameres_antiinvolutionfighter_battle_source.bundle",
+            "MainBundleSize": 27896,
+            "DependBundles": [
+                "defaultpackage_share_assets_gameassets_battlepanel_sprites_system_ui_zhandou.bundle",
+                "defaultpackage_share_assets_gameassets_battlepanel_sprites_icon_skill.bundle",
+                "defaultpackage_share_assets_gameassets_battlepanel_sprites_icon_touxiang.bundle",
+                "defaultpackage_share_assets_gameassets_battlepanel_sprites_scene.bundle",
+                "defaultpackage_share_assets_gameassets_battlepanel_sprites_icon_zhuangbei.bundle",
+                "defaultpackage_share_assets_gameassets_battlepanel_sprites_kapai.bundle",
+                "defaultpackage_share_assets_gameassets_battlepanel_sprites_common.bundle"
+            ],
+            "DependAssets": [
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_10.png",
+                "Assets/GameAssets/BattlePanel/Sprites/icon/skill/ui_skill_01.png",
+                "Assets/GameAssets/BattlePanel/Sprites/icon/touxiang/ui_touxiang_01.png",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_03.png",
+                "Assets/GameAssets/BattlePanel/Sprites/scene/ui_scene_zhandou_01.png",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_06.png",
+                "Assets/GameAssets/BattlePanel/Sprites/icon/zhuangbei/ui_zhuangbei_01.png",
+                "Assets/GameAssets/BattlePanel/Sprites/kapai/ui_kapai_kapaimingcheng.png",
+                "Assets/GameAssets/BattlePanel/Sprites/common/ui_common_03.png",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_04.png",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_02.png",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_08.png",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_05.png",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_07.png",
+                "Assets/GameAssets/BattlePanel/Sprites/common/ui_common_01.png",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_11.png",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_01.png",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_09.png",
+                "Assets/GameAssets/BattlePanel/Sprites/common/ui_common_02.png"
+            ]
+        },
+        {
+            "Address": "YIUIRoot",
+            "AssetPath": "Assets/GameRes/AntiInvolutionFighter/Common/Prefabs/YIUIRoot.prefab",
+            "AssetGUID": "e21e53dc018f9324080daf2cb082a623",
+            "AssetTags": [],
+            "MainBundleName": "defaultpackage_assets_gameres_antiinvolutionfighter_common_prefabs.bundle",
+            "MainBundleSize": 5269,
+            "DependBundles": [],
+            "DependAssets": []
+        },
+        {
+            "Address": "CommonPanelSource",
+            "AssetPath": "Assets/GameRes/AntiInvolutionFighter/Common/Source/CommonPanelSource.prefab",
+            "AssetGUID": "d742072f5d32b804daf9f9fb44001b21",
+            "AssetTags": [],
+            "MainBundleName": "defaultpackage_assets_gameres_antiinvolutionfighter_common_source.bundle",
+            "MainBundleSize": 4501,
+            "DependBundles": [],
+            "DependAssets": []
+        },
+        {
+            "Address": "RedDotConfigAsset",
+            "AssetPath": "Assets/GameRes/RedDot/RedDotConfigAsset.asset",
+            "AssetGUID": "0dcb1e9984607584cb76816331def3d6",
+            "AssetTags": [],
+            "MainBundleName": "defaultpackage_assets_gameres_reddot.bundle",
+            "MainBundleSize": 2761,
+            "DependBundles": [],
+            "DependAssets": []
+        },
+        {
+            "Address": "RedDotKeyAsset",
+            "AssetPath": "Assets/GameRes/RedDot/RedDotKeyAsset.asset",
+            "AssetGUID": "1c2682480387fff4192cfaa8839a13e6",
+            "AssetTags": [],
+            "MainBundleName": "defaultpackage_assets_gameres_reddot.bundle",
+            "MainBundleSize": 2761,
+            "DependBundles": [],
+            "DependAssets": []
+        }
+    ],
+    "BundleInfos": [
+        {
+            "BundleName": "defaultpackage_assets_gameres_antiinvolutionfighter_battle_prefabs.bundle",
+            "FileName": "0441877282216c03f74a289a0d968fca.bundle",
+            "FileHash": "0441877282216c03f74a289a0d968fca",
+            "FileCRC": "15258a09",
+            "FileSize": 41604,
+            "IsRawFile": false,
+            "LoadMethod": 0,
+            "Tags": [],
+            "ReferenceIDs": [],
+            "AllBuiltinAssets": [
+                "Assets/GameRes/AntiInvolutionFighter/Battle/Prefabs/Battle.prefab",
+                "Assets/GameRes/AntiInvolutionFighter/Battle/Prefabs/BattlePanel.prefab",
+                "Assets/Resources/BattlePanel/Prefabs/RoleInfoGroup.prefab",
+                "Assets/Resources/BattlePanel/Prefabs/CardItem.prefab"
+            ]
+        },
+        {
+            "BundleName": "defaultpackage_assets_gameres_antiinvolutionfighter_battle_source.bundle",
+            "FileName": "f6fb80733ecd2598752788e01267ceaa.bundle",
+            "FileHash": "f6fb80733ecd2598752788e01267ceaa",
+            "FileCRC": "63e375fd",
+            "FileSize": 27896,
+            "IsRawFile": false,
+            "LoadMethod": 0,
+            "Tags": [],
+            "ReferenceIDs": [],
+            "AllBuiltinAssets": [
+                "Assets/GameRes/AntiInvolutionFighter/Battle/Source/BattlePanelSource.prefab"
+            ]
+        },
+        {
+            "BundleName": "defaultpackage_assets_gameres_antiinvolutionfighter_common_prefabs.bundle",
+            "FileName": "f2b792db3e688d32353fbe4e35896159.bundle",
+            "FileHash": "f2b792db3e688d32353fbe4e35896159",
+            "FileCRC": "602b72f8",
+            "FileSize": 5269,
+            "IsRawFile": false,
+            "LoadMethod": 0,
+            "Tags": [],
+            "ReferenceIDs": [],
+            "AllBuiltinAssets": [
+                "Assets/GameRes/AntiInvolutionFighter/Common/Prefabs/YIUIRoot.prefab"
+            ]
+        },
+        {
+            "BundleName": "defaultpackage_assets_gameres_antiinvolutionfighter_common_source.bundle",
+            "FileName": "cdc37cc837cbd7999c134c5b3de51bb8.bundle",
+            "FileHash": "cdc37cc837cbd7999c134c5b3de51bb8",
+            "FileCRC": "3eb8f2a2",
+            "FileSize": 4501,
+            "IsRawFile": false,
+            "LoadMethod": 0,
+            "Tags": [],
+            "ReferenceIDs": [],
+            "AllBuiltinAssets": [
+                "Assets/GameRes/AntiInvolutionFighter/Common/Source/CommonPanelSource.prefab"
+            ]
+        },
+        {
+            "BundleName": "defaultpackage_assets_gameres_reddot.bundle",
+            "FileName": "b588701fbe08b9abf1831ec7515e21c7.bundle",
+            "FileHash": "b588701fbe08b9abf1831ec7515e21c7",
+            "FileCRC": "77ec61e2",
+            "FileSize": 2761,
+            "IsRawFile": false,
+            "LoadMethod": 0,
+            "Tags": [],
+            "ReferenceIDs": [],
+            "AllBuiltinAssets": [
+                "Assets/GameRes/RedDot/RedDotConfigAsset.asset",
+                "Assets/GameRes/RedDot/RedDotKeyAsset.asset"
+            ]
+        },
+        {
+            "BundleName": "defaultpackage_share_assets_gameassets_battlepanel_sprites_icon_skill.bundle",
+            "FileName": "ba14fd69dae10e81887250af0826cb37.bundle",
+            "FileHash": "ba14fd69dae10e81887250af0826cb37",
+            "FileCRC": "62299596",
+            "FileSize": 19179,
+            "IsRawFile": false,
+            "LoadMethod": 0,
+            "Tags": [],
+            "ReferenceIDs": [
+                0,
+                1
+            ],
+            "AllBuiltinAssets": [
+                "Assets/GameAssets/BattlePanel/Sprites/icon/skill/ui_skill_01.png"
+            ]
+        },
+        {
+            "BundleName": "defaultpackage_share_assets_gameassets_battlepanel_sprites_system_ui_zhandou.bundle",
+            "FileName": "11f114a647aa0b4ce824bc3874c73649.bundle",
+            "FileHash": "11f114a647aa0b4ce824bc3874c73649",
+            "FileCRC": "fce258ed",
+            "FileSize": 60426,
+            "IsRawFile": false,
+            "LoadMethod": 0,
+            "Tags": [],
+            "ReferenceIDs": [
+                0,
+                1
+            ],
+            "AllBuiltinAssets": [
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_10.png",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_03.png",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_06.png",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_04.png",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_02.png",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_07.png",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_08.png",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_05.png",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_11.png",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_01.png",
+                "Assets/GameAssets/BattlePanel/Sprites/system_UI/zhandou/ui_zhandou_09.png"
+            ]
+        },
+        {
+            "BundleName": "defaultpackage_share_assets_gameassets_battlepanel_sprites_icon_touxiang.bundle",
+            "FileName": "fa426531b7f13bfdf9adc18b79d76dd7.bundle",
+            "FileHash": "fa426531b7f13bfdf9adc18b79d76dd7",
+            "FileCRC": "d34a274d",
+            "FileSize": 14590,
+            "IsRawFile": false,
+            "LoadMethod": 0,
+            "Tags": [],
+            "ReferenceIDs": [
+                0,
+                1
+            ],
+            "AllBuiltinAssets": [
+                "Assets/GameAssets/BattlePanel/Sprites/icon/touxiang/ui_touxiang_01.png"
+            ]
+        },
+        {
+            "BundleName": "defaultpackage_share_assets_gameassets_battlepanel_sprites_scene.bundle",
+            "FileName": "c04a1dfefe092bf807a309988a80e845.bundle",
+            "FileHash": "c04a1dfefe092bf807a309988a80e845",
+            "FileCRC": "d4616d37",
+            "FileSize": 726963,
+            "IsRawFile": false,
+            "LoadMethod": 0,
+            "Tags": [],
+            "ReferenceIDs": [
+                0,
+                1
+            ],
+            "AllBuiltinAssets": [
+                "Assets/GameAssets/BattlePanel/Sprites/scene/ui_scene_zhandou_01.png"
+            ]
+        },
+        {
+            "BundleName": "defaultpackage_share_assets_gameassets_battlepanel_sprites_icon_zhuangbei.bundle",
+            "FileName": "12b544bbeb10f642f870262e4a3ebd95.bundle",
+            "FileHash": "12b544bbeb10f642f870262e4a3ebd95",
+            "FileCRC": "7d4af0a8",
+            "FileSize": 5260,
+            "IsRawFile": false,
+            "LoadMethod": 0,
+            "Tags": [],
+            "ReferenceIDs": [
+                0,
+                1
+            ],
+            "AllBuiltinAssets": [
+                "Assets/GameAssets/BattlePanel/Sprites/icon/zhuangbei/ui_zhuangbei_01.png"
+            ]
+        },
+        {
+            "BundleName": "defaultpackage_share_assets_gameassets_battlepanel_sprites_kapai.bundle",
+            "FileName": "07df72e245d8a924b7097acb51545540.bundle",
+            "FileHash": "07df72e245d8a924b7097acb51545540",
+            "FileCRC": "a29c8a22",
+            "FileSize": 6122,
+            "IsRawFile": false,
+            "LoadMethod": 0,
+            "Tags": [],
+            "ReferenceIDs": [
+                0,
+                1
+            ],
+            "AllBuiltinAssets": [
+                "Assets/GameAssets/BattlePanel/Sprites/kapai/ui_kapai_kapaimingcheng.png"
+            ]
+        },
+        {
+            "BundleName": "defaultpackage_share_assets_gameassets_battlepanel_sprites_common.bundle",
+            "FileName": "c967a600e93d503eae4bc5feb180167e.bundle",
+            "FileHash": "c967a600e93d503eae4bc5feb180167e",
+            "FileCRC": "a0443615",
+            "FileSize": 9691,
+            "IsRawFile": false,
+            "LoadMethod": 0,
+            "Tags": [],
+            "ReferenceIDs": [
+                0,
+                1
+            ],
+            "AllBuiltinAssets": [
+                "Assets/GameAssets/BattlePanel/Sprites/common/ui_common_03.png",
+                "Assets/GameAssets/BattlePanel/Sprites/common/ui_common_01.png",
+                "Assets/GameAssets/BattlePanel/Sprites/common/ui_common_02.png"
+            ]
+        }
+    ],
+    "RedundancyInfos": []
+}

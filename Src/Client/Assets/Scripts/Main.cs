@@ -2,12 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using Fighter.Battle;
 using I2.Loc;
 using Sirenix.OdinInspector;
 using UnityEngine;
 // using Anti.Login;
 using YooAsset; //如果不是用的Yoo资源管理器就可以删除掉
 using Object = UnityEngine.Object;
+
 
 //------------------------------------------------------------
 // Author: 亦亦
@@ -24,6 +26,12 @@ namespace YIUIFramework
     {
         private ResourcePackage package;
 
+        /// <summary>
+        /// 资源系统运行模式
+        /// </summary>
+        public EPlayMode playMode = EPlayMode.EditorSimulateMode;
+
+        
         /// <summary>
         /// 重点都在这里  一定要吧你项目中的资源管理  同步加载 异步加载 释放 注入到YIUI框架中
         /// 用什么资源管理都可以 Demo中用的YooAsset为案例 并非必须使用此资源管理
@@ -135,11 +143,52 @@ namespace YIUIFramework
         #else
         private IEnumerator InitializeYooAsset()
         {
-            var initParameters = new EditorSimulateModeParameters();
-            //要根据你定义的包名对应
-            initParameters.SimulateManifestFilePath = EditorSimulateModeHelper.SimulateBuild("DefaultPackage");
-            yield return package.InitializeAsync(initParameters);
-            StartOpenPanel().Forget();
+             string packageName = "DefaultPackage";
+             var package = YooAssets.TryGetPackage(packageName);
+             if (package == null)
+             {
+                 package = YooAssets.CreatePackage(packageName);
+                 YooAssets.SetDefaultPackage(package);
+             }
+            
+             // 编辑器下的模拟模式
+             InitializationOperation initializationOperation = null;
+             if (playMode == EPlayMode.EditorSimulateMode)
+             {
+                 var createParameters = new EditorSimulateModeParameters();
+                 createParameters.SimulateManifestFilePath = EditorSimulateModeHelper.SimulateBuild(packageName);
+                 initializationOperation = package.InitializeAsync(createParameters);
+             }
+            
+             // 单机运行模式
+             if (playMode == EPlayMode.OfflinePlayMode)
+             {
+                 var createParameters = new OfflinePlayModeParameters();
+                 // createParameters.DecryptionServices = new GameDecryptionServices();
+                 initializationOperation = package.InitializeAsync(createParameters);
+             }
+            
+             // 联机运行模式
+             if (playMode == EPlayMode.HostPlayMode)
+             {
+                 string defaultHostServer = GetHostServerURL();
+                 string fallbackHostServer = GetHostServerURL();
+                 var createParameters = new HostPlayModeParameters();
+                 // createParameters.DecryptionServices = new GameDecryptionServices();
+                 createParameters.QueryServices = new GameQueryServices();
+                 createParameters.RemoteServices = new RemoteServices(defaultHostServer, fallbackHostServer);
+                 initializationOperation = package.InitializeAsync(createParameters);
+             }
+            
+             yield return initializationOperation;
+            
+             // var initParameters = new EditorSimulateModeParameters();
+             // //要根据你定义的包名对应
+             // initParameters.SimulateManifestFilePath = EditorSimulateModeHelper.SimulateBuild("DefaultPackage");
+             // yield return package.InitializeAsync(initParameters);
+             // var initParameters = new OfflinePlayModeParameters();
+             // yield return package.InitializeAsync(initParameters);
+             StartOpenPanel().Forget();
         }
         #endif
         
@@ -149,13 +198,13 @@ namespace YIUIFramework
         {
             //以下是YIUI中已经用到的管理器 在这里初始化
             //不需要的功能可以删除
-            await MgrCenter.Inst.Register(I2LocalizeMgr.Inst);
-            await MgrCenter.Inst.Register(CountDownMgr.Inst);
-            await MgrCenter.Inst.Register(RedDotMgr.Inst);
+            // await MgrCenter.Inst.Register(I2LocalizeMgr.Inst);
+            // await MgrCenter.Inst.Register(CountDownMgr.Inst);
+            // await MgrCenter.Inst.Register(RedDotMgr.Inst);
             await MgrCenter.Inst.Register(PanelMgr.Inst);
             
             //在这里打开你的第一个界面
-            // PanelMgr.Inst.OpenPanel<LoginPanel>();
+            PanelMgr.Inst.OpenPanel<BattlePanel>();
         }
 
         
@@ -172,6 +221,55 @@ namespace YIUIFramework
         {
             //调试用多语言卸载缓存数据  不需要可以删除
             I2.Loc.ResourceManager.pInstance.CleanResourceCache();
+        }
+        
+        private string GetHostServerURL()
+        {
+            //string hostServerIP = "http://10.0.2.2"; //安卓模拟器地址
+            string hostServerIP = "http://127.0.0.1";
+            string appVersion = "v1.0";
+
+#if UNITY_EDITOR
+            if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.Android)
+                return $"{hostServerIP}/CDN/Android/{appVersion}";
+            else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.iOS)
+                return $"{hostServerIP}/CDN/IPhone/{appVersion}";
+            else if (UnityEditor.EditorUserBuildSettings.activeBuildTarget == UnityEditor.BuildTarget.WebGL)
+                return $"{hostServerIP}/CDN/WebGL/{appVersion}";
+            else
+                return $"{hostServerIP}/CDN/PC/{appVersion}";
+#else
+		if (Application.platform == RuntimePlatform.Android)
+			return $"{hostServerIP}/CDN/Android/{appVersion}";
+		else if (Application.platform == RuntimePlatform.IPhonePlayer)
+			return $"{hostServerIP}/CDN/IPhone/{appVersion}";
+		else if (Application.platform == RuntimePlatform.WebGLPlayer)
+			return $"{hostServerIP}/CDN/WebGL/{appVersion}";
+		else
+			return $"{hostServerIP}/CDN/PC/{appVersion}";
+#endif
+        }
+        /// <summary>
+        /// 远端资源地址查询服务类
+        /// </summary>
+        private class RemoteServices : IRemoteServices
+        {
+            private readonly string _defaultHostServer;
+            private readonly string _fallbackHostServer;
+
+            public RemoteServices(string defaultHostServer, string fallbackHostServer)
+            {
+                _defaultHostServer = defaultHostServer;
+                _fallbackHostServer = fallbackHostServer;
+            }
+            string IRemoteServices.GetRemoteFallbackURL(string fileName)
+            {
+                return $"{_defaultHostServer}/{fileName}";
+            }
+            string IRemoteServices.GetRemoteMainURL(string fileName)
+            {
+                return $"{_fallbackHostServer}/{fileName}";
+            }
         }
         
     }

@@ -1,0 +1,22 @@
+ManifestFileVersion: 0
+CRC: 274026040
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: e0678e344b50b39749735f6b4e9f2cfb
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 1189a58431c1137e31cdd0045a7294d1
+HashAppended: 0
+ClassTypes:
+- Class: 114
+  Script: {fileID: 11500000, guid: 45535728f0f947f9a2e9c2262eaec459, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 663fe2ae1bff4a59b18bf05ec0377719, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/GameRes/RedDot/RedDotKeyAsset.asset
+- Assets/GameRes/RedDot/RedDotConfigAsset.asset
+Dependencies: []

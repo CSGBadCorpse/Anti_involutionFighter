@@ -13,8 +13,15 @@ namespace YIUICodeGenerated
             var BasePanel     = typeof(BasePanel);
             var BaseView      = typeof(BaseView);
             var BaseComponent = typeof(BaseComponent);
-            var list          = new UIBindVo[0];
-
+            var list          = new UIBindVo[1];
+            list[0] = new UIBindVo
+            {
+                PkgName     = Fighter.Battle.BattlePanelBase.PkgName,
+                ResName     = Fighter.Battle.BattlePanelBase.ResName,
+                CodeType    = BasePanel,
+                BaseType    = typeof(Fighter.Battle.BattlePanelBase),
+                CreatorType = typeof(Fighter.Battle.BattlePanel),
+            };
 
             return list;
         }

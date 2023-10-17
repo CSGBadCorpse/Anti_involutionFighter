@@ -1,0 +1,69 @@
+ManifestFileVersion: 0
+CRC: 290593807
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: f87cea8e30e6c9403ffd08690746add2
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: ffc5ea1e9086dd47330110a711abaf5e
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0d9ca4735ae044b4b169fb6dd82fa3d6, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 189105a42ee74f83ba5487327c2d3580, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 0af0d78ed910487782cd796592642ac5, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 76af6b314c984a70bd77fd9c0d998f89, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4e653f1c5ec04766b7a16c1a9b9ff51e, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 286a297a42e64638b9035112147b4d3d, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/GameRes/AntiInvolutionFighter/Battle/Prefabs/Battle.prefab
+- Assets/GameRes/AntiInvolutionFighter/Battle/Prefabs/BattlePanel.prefab
+Dependencies:
+- D:/UnityProjects/Anti_involutionFighter/Src/Client/Bundles/Android/DefaultPackage/OutputCache/defaultpackage_share_assets_gameassets_battlepanel_sprites_common.bundle
+- D:/UnityProjects/Anti_involutionFighter/Src/Client/Bundles/Android/DefaultPackage/OutputCache/defaultpackage_share_assets_gameassets_battlepanel_sprites_icon_skill.bundle
+- D:/UnityProjects/Anti_involutionFighter/Src/Client/Bundles/Android/DefaultPackage/OutputCache/defaultpackage_share_assets_gameassets_battlepanel_sprites_icon_touxiang.bundle
+- D:/UnityProjects/Anti_involutionFighter/Src/Client/Bundles/Android/DefaultPackage/OutputCache/defaultpackage_share_assets_gameassets_battlepanel_sprites_icon_zhuangbei.bundle
+- D:/UnityProjects/Anti_involutionFighter/Src/Client/Bundles/Android/DefaultPackage/OutputCache/defaultpackage_share_assets_gameassets_battlepanel_sprites_kapai.bundle
+- D:/UnityProjects/Anti_involutionFighter/Src/Client/Bundles/Android/DefaultPackage/OutputCache/defaultpackage_share_assets_gameassets_battlepanel_sprites_scene.bundle
+- D:/UnityProjects/Anti_involutionFighter/Src/Client/Bundles/Android/DefaultPackage/OutputCache/defaultpackage_share_assets_gameassets_battlepanel_sprites_system_ui_zhandou.bundle

@@ -1,0 +1,27 @@
+ManifestFileVersion: 0
+CRC: 3065970128
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: b96f0b2f2173a49995d769c989ddf40b
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 77aa0167e7cfcd61f7d44992cfc98a79
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 189105a42ee74f83ba5487327c2d3580, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 76af6b314c984a70bd77fd9c0d998f89, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/GameRes/AntiInvolutionFighter/Common/Source/CommonPanelSource.prefab
+Dependencies: []

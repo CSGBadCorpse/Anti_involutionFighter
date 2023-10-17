@@ -12,22 +12,22 @@ namespace GameUI.GamePlay
         public ActorData playerData;//连接scriptableObject获取数据
         //这里写playerAnimation和spineAssetData
 
-        [SerializeField]
-        private Text _nameText;
-
-        [SerializeField]
-        private GameObject bloodUI;
-        private Image _bloodValue;
-        private Text _bloodText;
-        
-        [SerializeField] 
-        private GameObject _energyUI;
-        private Image _energyValue;
-        private Text _energyText;
-
-        [SerializeField]
-        private GameObject puaUI;
-        private Text _puaText;
+        // [SerializeField]
+        // private Text _nameText;
+        //
+        // [SerializeField]
+        // private GameObject bloodUI;
+        // private Image _bloodValue;
+        // private Text _bloodText;
+        //
+        // [SerializeField] 
+        // private GameObject _energyUI;
+        // private Image _energyValue;
+        // private Text _energyText;
+        //
+        // [SerializeField]
+        // private GameObject puaUI;
+        // private Text _puaText;
 
         [Header("初始化数据")]
         [SerializeField]
@@ -46,15 +46,15 @@ namespace GameUI.GamePlay
         {
             playerData = new ActorData(bloodMax, energyMax, puaValue, name);
 
-            _nameText.text = playerData.Name;
-
-            _bloodValue = bloodUI.transform.GetChild(0).GetComponentInChildren<Image>();
-            _bloodText = bloodUI.transform.GetComponentInChildren<Text>();
-
-            _energyValue = _energyUI.transform.GetChild(0).GetComponent<Image>();
-            _energyText = _energyUI.GetComponentInChildren<Text>();
-
-            _puaText = puaUI.GetComponentInChildren<Text>();
+            // _nameText.text = playerData.Name;
+            //
+            // _bloodValue = bloodUI.transform.GetChild(0).GetComponentInChildren<Image>();
+            // _bloodText = bloodUI.transform.GetComponentInChildren<Text>();
+            //
+            // _energyValue = _energyUI.transform.GetChild(0).GetComponent<Image>();
+            // _energyText = _energyUI.GetComponentInChildren<Text>();
+            //
+            // _puaText = puaUI.GetComponentInChildren<Text>();
 
             // if (cards.Count > 0)
             // {
@@ -65,8 +65,8 @@ namespace GameUI.GamePlay
             // }
 
         }
-        private void Update()
-        {
+        // private void Update()
+        // {
             //if (Input.GetKeyDown(KeyCode.Space))
             //{
                 //playerData.PuaDecrease(1);
@@ -89,20 +89,20 @@ namespace GameUI.GamePlay
             //}
 
             //UpdateUI();
-        }
+        // }
 
 
-        private void UpdateUI()
-        {
-            _bloodValue.fillAmount = (float)playerData.BloodCur / playerData.BloodMax;
-            _bloodText.text = playerData.BloodCur.ToString() + "/" + playerData.BloodMax.ToString();
-
-            _energyValue.fillAmount = (float)playerData.EnergyCur / playerData.EnergyMax;
-            _energyText.text = playerData.EnergyCur.ToString() + "/" + playerData.EnergyMax.ToString();
-
-            _puaText.text = "X" + playerData.PuaValue.ToString();
-
-        }
+        // private void UpdateUI()
+        // {
+        //     _bloodValue.fillAmount = (float)playerData.BloodCur / playerData.BloodMax;
+        //     _bloodText.text = playerData.BloodCur.ToString() + "/" + playerData.BloodMax.ToString();
+        //
+        //     _energyValue.fillAmount = (float)playerData.EnergyCur / playerData.EnergyMax;
+        //     _energyText.text = playerData.EnergyCur.ToString() + "/" + playerData.EnergyMax.ToString();
+        //
+        //     _puaText.text = "X" + playerData.PuaValue.ToString();
+        //
+        // }
         public bool IsCardEmpty()
         {
             return playerData.IsCardEmpty();

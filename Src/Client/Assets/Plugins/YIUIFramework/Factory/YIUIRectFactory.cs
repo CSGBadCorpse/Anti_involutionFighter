@@ -4,6 +4,8 @@ namespace YIUIFramework
 {
     /// <summary>
     /// 创建一个UI空对象时
+    /// 不是UIBase 也不是entity
+    /// 就是unity的一个obj而已
     /// </summary>
     public static class YIUIRectFactory
     {

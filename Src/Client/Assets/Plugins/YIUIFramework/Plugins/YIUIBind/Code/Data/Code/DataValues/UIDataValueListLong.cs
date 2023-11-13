@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
 
-namespace YIUIBind
+namespace YIUIFramework
 {
     [HideLabel]
     [HideReferenceObjectPicker]

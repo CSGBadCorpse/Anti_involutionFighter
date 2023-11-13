@@ -12,7 +12,7 @@ using UnityEngine;
 using YIUIFramework;
 using Logger = YIUIFramework.Logger;
 
-namespace YIUIBind
+namespace YIUIFramework
 {
     //[DetailedInfoBox("UI 数据表 点击展开详细介绍", @"李胜扬")]
     [LabelText("UI 数据表")]

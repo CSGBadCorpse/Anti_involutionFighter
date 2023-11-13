@@ -8,7 +8,7 @@ using UnityEngine.UI;
 using YIUIFramework;
 using Logger = YIUIFramework.Logger;
 
-namespace YIUIBind
+namespace YIUIFramework
 {
     /// <summary>
     /// 改变绑定数据 配合 event使用

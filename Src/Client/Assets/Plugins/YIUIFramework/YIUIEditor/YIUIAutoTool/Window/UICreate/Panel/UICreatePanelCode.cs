@@ -17,7 +17,7 @@ namespace YIUIFramework.Editor
 
         public UICreatePanelCode(out bool result, string authorName, UICreatePanelData codeData) : base(authorName)
         {
-            var path     = $"{UIStaticHelper.UICodeScriptsPath}/{codeData.PkgName}/{codeData.ResName}.cs";
+            var path     = $"{UIStaticHelper.UIETSystemGenPath}/{codeData.PkgName}/{codeData.ResName}.cs";
             var template = $"{UIStaticHelper.UITemplatePath}/UICreatePanelTemplate.txt";
             CreateVo = new CreateVo(template, path);
 
@@ -33,6 +33,11 @@ namespace YIUIFramework.Editor
                 result = CreateNewFile();
             }
 
+            if (codeData.CoverDic != null)
+            {
+                OverrideCheckCodeFile(codeData.CoverDic,true);
+            }
+            
             if (codeData.OverrideDic == null)
             {
                 result = true;

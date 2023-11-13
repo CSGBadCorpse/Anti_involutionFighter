@@ -4,7 +4,7 @@ using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace YIUIBind
+namespace YIUIFramework
 {
     [LabelText("任意集合的Component的显隐")]
     [AddComponentMenu("YIUIBind/Data/显隐 【ActiveComponents】 UIDataBindActiveComponents s")]

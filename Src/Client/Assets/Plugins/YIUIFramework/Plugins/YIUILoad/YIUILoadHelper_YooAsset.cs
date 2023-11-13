@@ -1,6 +1,6 @@
 ﻿using System;
 using Object = UnityEngine.Object;
-using Cysharp.Threading.Tasks;
+using ET;
 
 namespace YIUIFramework
 {
@@ -14,7 +14,7 @@ namespace YIUIFramework
             return LoadAsset<T>("", resName);
         }
 
-        internal static async UniTask<T> LoadAssetAsync<T>(string resName) where T : Object
+        internal static async ETTask<T> LoadAssetAsync<T>(string resName) where T : Object
         {
             return await LoadAssetAsync<T>("", resName);
         }
@@ -36,7 +36,7 @@ namespace YIUIFramework
             return LoadAsset("", resName, assetType);
         }
 
-        internal static async UniTask<Object> LoadAssetAsync(string resName, Type assetType)
+        internal static async ETTask<Object> LoadAssetAsync(string resName, Type assetType)
         {
             return await LoadAssetAsync("", resName, assetType);
         }

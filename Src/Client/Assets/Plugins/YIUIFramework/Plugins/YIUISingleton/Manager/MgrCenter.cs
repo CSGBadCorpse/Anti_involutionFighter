@@ -5,7 +5,7 @@
 //------------------------------------------------------------
 
 using System.Collections.Generic;
-using Cysharp.Threading.Tasks;
+using ET;
 
 namespace YIUIFramework
 {
@@ -21,7 +21,7 @@ namespace YIUIFramework
         //返回初始化结果 如果失败是无法加入到管理中的
         //失败的可以重复调用直到成功
         //只有注册没有对应的移除  需要移除直接Dispose释放即可
-        public async UniTask<bool> Register(IManager manager)
+        public async ETTask<bool> Register(IManager manager)
         {
             var result = await g_MgrCore.Add(manager);
             if (!result)

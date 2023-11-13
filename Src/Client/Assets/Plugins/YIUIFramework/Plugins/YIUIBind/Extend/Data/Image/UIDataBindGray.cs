@@ -2,7 +2,7 @@
 using UnityEngine;
 using YIUIFramework;
 
-namespace YIUIBind
+namespace YIUIFramework
 {
     [LabelText("置灰")]
     [RequireComponent(typeof(UIGrayscale))]

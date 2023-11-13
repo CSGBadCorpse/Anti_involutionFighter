@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
-using UnityEditor;
 
 namespace YIUIFramework.Editor
 {
@@ -48,7 +47,7 @@ namespace YIUIFramework.Editor
         {
             if (string.IsNullOrEmpty(AddMacro))
             {
-                EditorUtility.DisplayDialog("提示", "请填写需要添加的宏名称", "确认");
+                UnityTipsHelper.Show("请填写需要添加的宏名称");
                 return;
             }
 
@@ -60,7 +59,7 @@ namespace YIUIFramework.Editor
         {
             if (string.IsNullOrEmpty(RemoveMacro))
             {
-                EditorUtility.DisplayDialog("提示", "请选择需要移除的宏", "确认");
+                UnityTipsHelper.Show("请选择需要移除的宏");
                 return;
             }
 

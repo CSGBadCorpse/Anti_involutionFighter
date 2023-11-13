@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace YIUIBind
+namespace YIUIFramework
 {
     [Serializable]
     [LabelText("下拉菜单")]

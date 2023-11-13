@@ -88,8 +88,7 @@ namespace YIUIFramework.Editor
                     if (ShowTips)
                     {
                         var code = $"文件已存在 当前选择已存在不覆盖 {CreateVo.SavePath}";
-                        Debug.LogError(code);
-                        EditorUtility.DisplayDialog("提示", code, "确认");
+                        UnityTipsHelper.ShowWarning(code);
                     }
 
                     return false;
@@ -98,14 +97,14 @@ namespace YIUIFramework.Editor
 
             if (!TemplateEngine.CreateCodeFile(CreateVo.SavePath, CreateVo.TemplatePath, ValueDic))
             {
-                EditorUtility.DisplayDialog("提示", CreateVo.SavePath + "创建失败", "确认");
+                UnityTipsHelper.Show(CreateVo.SavePath + "创建失败");
                 TemplateEngine.TemplateBasePath = null;
                 return false;
             }
 
             if (ShowTips)
             {
-                EditorUtility.DisplayDialog("提示", $"{EventName} 处理完毕", "确认");
+                UnityTipsHelper.Show($"{EventName} 处理完毕");
             }
 
             if (AutoRefresh)
@@ -129,8 +128,7 @@ namespace YIUIFramework.Editor
                 if (ShowTips)
                 {
                     var code = $"文件不存在 无法重写 {CreateVo.SavePath}";
-                    Debug.LogError(code);
-                    EditorUtility.DisplayDialog("提示", code, "确认");
+                    UnityTipsHelper.ShowError(code);
                 }
 
                 return false;
@@ -138,14 +136,14 @@ namespace YIUIFramework.Editor
 
             if (!TemplateEngine.OverrideCodeFile(CreateVo.SavePath, ValueDic, OtherRetain))
             {
-                EditorUtility.DisplayDialog("提示", CreateVo.SavePath + "创建失败", "确认");
+                UnityTipsHelper.ShowError(CreateVo.SavePath + "创建失败");
                 TemplateEngine.TemplateBasePath = null;
                 return false;
             }
 
             if (ShowTips)
             {
-                EditorUtility.DisplayDialog("提示", $"{EventName} 处理完毕", "确认");
+                UnityTipsHelper.Show($"{EventName} 处理完毕");
             }
 
             if (AutoRefresh)
@@ -162,16 +160,17 @@ namespace YIUIFramework.Editor
         /// 如: 我要提供一个方法给玩家 如果这个方法已经存在了就不检查了 否则我就会创建一个新的方法
         /// 使用此方法需要吧上面的 OverrideDic 赋值
         /// </summary>
+        /// <param name="overrideDic">数据</param>
+        /// <param name="cover">是否覆盖 则不需要检查是否有直接全部覆盖</param>
         /// <returns></returns>
-        protected bool OverrideCheckCodeFile(Dictionary<string, List<Dictionary<string, string>>> overrideDic)
+        protected bool OverrideCheckCodeFile(Dictionary<string, List<Dictionary<string, string>>> overrideDic, bool cover = false)
         {
             if (!TemplateEngine.FileExists(CreateVo.SavePath))
             {
                 if (ShowTips)
                 {
                     var code = $"文件不存在 无法重写 {CreateVo.SavePath}";
-                    Debug.LogError(code);
-                    EditorUtility.DisplayDialog("提示", code, "确认");
+                    UnityTipsHelper.ShowError(code);
                 }
 
                 return false;
@@ -185,9 +184,9 @@ namespace YIUIFramework.Editor
 
             if (overrideDic.Count >= 1)
             {
-                if (!TemplateEngine.OverrideCheckCodeFile(CreateVo.SavePath, overrideDic))
+                if (!TemplateEngine.OverrideCheckCodeFile(CreateVo.SavePath, overrideDic, cover))
                 {
-                    EditorUtility.DisplayDialog("提示", CreateVo.SavePath + "创建失败", "确认");
+                    UnityTipsHelper.ShowError(CreateVo.SavePath + "创建失败");
                     TemplateEngine.TemplateBasePath = null;
                     return false;
                 }
@@ -195,7 +194,7 @@ namespace YIUIFramework.Editor
 
             if (ShowTips)
             {
-                EditorUtility.DisplayDialog("提示", $"{EventName} 处理完毕", "确认");
+                UnityTipsHelper.Show($"{EventName} 处理完毕");
             }
 
             if (AutoRefresh)
@@ -211,15 +210,14 @@ namespace YIUIFramework.Editor
     /// 这是一个案例 只需要new这个类 即可进行一系列模板操作
     /// 创建一个新文件时
     /// </summary>
-    public class TestTemplate : BaseTemplate
+    public class TestTemplate: BaseTemplate
     {
         public override string EventName => "测试案例一 创建新文件";
         public override bool   Cover     => false;
 
-        public TestTemplate(string authorName, string moduleName, string pkgName, string resName) : base(authorName)
+        public TestTemplate(string authorName, string moduleName, string pkgName, string resName): base(authorName)
         {
-            CreateVo = new CreateVo(
-                "Assets/.../Template/BasePanelTemplate.txt",
+            CreateVo = new CreateVo("Assets/.../Template/BasePanelTemplate.txt",
                 $"Assets/../{moduleName}/UI/{resName}.cs");
 
             ValueDic["moduleName"] = moduleName;
@@ -234,16 +232,15 @@ namespace YIUIFramework.Editor
     /// 这是一个案例 只需要new这个类 即可进行一系列模板操作
     /// 重写文件内容
     /// </summary>
-    public class TestTemplate2 : BaseTemplate
+    public class TestTemplate2: BaseTemplate
     {
         public override string EventName => "测试案例二 重写文件内容";
 
         //public override bool OtherRetain => false;
 
-        public TestTemplate2(string authorName, string moduleName, string pkgName, string resName) : base(authorName)
+        public TestTemplate2(string authorName, string moduleName, string pkgName, string resName): base(authorName)
         {
-            CreateVo = new CreateVo(
-                "Assets/.../Template/BasePanelTemplate.txt",
+            CreateVo = new CreateVo("Assets/.../Template/BasePanelTemplate.txt",
                 $"Assets/../{moduleName}/UI/{resName}.cs");
 
             ValueDic["moduleName"] = moduleName;

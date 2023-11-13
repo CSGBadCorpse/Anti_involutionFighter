@@ -7,7 +7,7 @@ using Sirenix.Serialization;
 using UnityEngine;
 using YIUIFramework;
 
-namespace YIUIBind
+namespace YIUIFramework
 {
     public sealed partial class UIBindEventTable
     {

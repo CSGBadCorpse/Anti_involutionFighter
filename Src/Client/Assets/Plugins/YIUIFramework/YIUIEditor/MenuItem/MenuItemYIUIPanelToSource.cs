@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using YIUIBind;
+
 
 namespace YIUIFramework.Editor
 {
@@ -64,6 +64,7 @@ namespace YIUIFramework.Editor
             var savePath =
                 $"{UIStaticHelper.UIProjectResPath}/{panelCdeTable.PkgName}/{UIStaticHelper.UISource}/{newSourceName}.prefab";
 
+            //TODO 有人不按要求操作直接不使用view 关联了其他组件 这个组件的引用逆向时会无法关联
             if (AssetDatabase.LoadAssetAtPath(savePath, typeof(Object)) != null)
             {
                 UnityTipsHelper.CallBack("源数据已存在!!! 此操作将会覆盖旧的数据!!!", () => { CreateNewSource(path, savePath); });

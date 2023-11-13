@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using Cysharp.Threading.Tasks;
+﻿using ET;
 using UnityEngine;
-using YIUIBind;
 
 namespace YIUIFramework
 {
@@ -11,16 +9,17 @@ namespace YIUIFramework
     /// </summary>
     public partial class YIUI3DDisplayExtend
     {
-        public async UniTaskVoid ShowAsync(string resName, string cameraName = "Camera")
+        public async ETTask<GameObject> ShowAsync(string resName, string cameraName = "")
         {
             var obj = await GetDisplayObjectAsync(resName);
-            if (obj == null) return;
-            var camera = GetCamera(obj, cameraName);
-            if (camera == null) return;
+            if (obj == null) return null;
+            var camera = string.IsNullOrEmpty(cameraName)? m_UI3DDisplay.ShowCamera : GetCamera(obj, cameraName);
+            if (camera == null) return obj;
             m_UI3DDisplay.Show(obj, camera);
+            return obj;
         }
 
-        private async UniTask<GameObject> GetDisplayObjectAsync(string resName)
+        private async ETTask<GameObject> GetDisplayObjectAsync(string resName)
         {
             if (!m_ObjPool.ContainsKey(resName))
             {
@@ -31,7 +30,7 @@ namespace YIUIFramework
             return m_ObjPool[resName];
         }
 
-        private async UniTask<GameObject> CreateObjectAsync(string resName)
+        private async ETTask<GameObject> CreateObjectAsync(string resName)
         {
             var obj = await YIUIFactory.InstantiateGameObjectAsync("", resName);
             if (obj == null)

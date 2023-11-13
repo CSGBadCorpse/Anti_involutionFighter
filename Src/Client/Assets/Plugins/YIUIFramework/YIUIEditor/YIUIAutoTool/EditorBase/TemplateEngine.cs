@@ -34,7 +34,7 @@ namespace YIUIFramework.Editor
         /// <param name="readTemplateCache"></param>
         /// <returns></returns>
         public static string Do(string                     templatePath, Dictionary<string, string> valueDic,
-                                Dictionary<string, string> valueDic2,    bool readTemplateCache = true)
+                                Dictionary<string, string> valueDic2,    bool                       readTemplateCache = true)
         {
             if (!string.IsNullOrEmpty(TemplateBasePath))
             {
@@ -96,10 +96,10 @@ namespace YIUIFramework.Editor
         /// <param name="fieldOrPropNames"></param>
         /// <param name="afterProcessItem">后处理函数</param>
         /// <returns></returns>
-        public static string DoList<TItemType>(string itemTemplateStr, TItemType[] list, string[] fieldOrPropNames,
+        public static string DoList<TItemType>(string                          itemTemplateStr, TItemType[] list, string[] fieldOrPropNames,
                                                Func<string, TItemType, string> afterProcessItem = null)
         {
-            Type itemType = typeof(TItemType);
+            Type itemType = typeof (TItemType);
             int  len      = list.Length;
 
             StringBuilder sb = new StringBuilder(len);
@@ -147,7 +147,7 @@ namespace YIUIFramework.Editor
         {
             try
             {
-                path = path.Contains("Assets/") ? path : "Assets/" + path;
+                path = path.Contains("Assets/")? path : "Assets/" + path;
                 path = EditorHelper.GetProjPath(path);
                 return File.Exists(path);
             }
@@ -160,8 +160,8 @@ namespace YIUIFramework.Editor
 
         public static bool CreateCodeFile(string path, string templateName, Dictionary<string, string> valueDic)
         {
-            templateName = templateName.Contains("Assets/") ? templateName : "Assets/" + templateName;
-            templateName = templateName.Contains(".txt") ? templateName : templateName + ".txt";
+            templateName = templateName.Contains("Assets/")? templateName : "Assets/" + templateName;
+            templateName = templateName.Contains(".txt")? templateName : templateName + ".txt";
             string clsStr = Do(templateName, valueDic, null, false);
             if (clsStr == null)
             {
@@ -171,7 +171,7 @@ namespace YIUIFramework.Editor
 
             try
             {
-                path = path.Contains("Assets/") ? path : "Assets/" + path;
+                path = path.Contains("Assets/")? path : "Assets/" + path;
                 path = EditorHelper.GetProjPath(path);
                 string dir = Path.GetDirectoryName(path);
                 if (dir == null)
@@ -278,7 +278,7 @@ namespace YIUIFramework.Editor
         /// <returns></returns>
         public static bool OverrideCodeFile(string path, Dictionary<string, string> valueDic, bool otherRetain = true)
         {
-            path = path.Contains("Assets/") ? path : "Assets/" + path;
+            path = path.Contains("Assets/")? path : "Assets/" + path;
             path = EditorHelper.GetProjPath(path);
             foreach (var pair in valueDic)
             {
@@ -372,9 +372,10 @@ namespace YIUIFramework.Editor
         /// 需要区域内不存在才写入
         /// </summary>
         public static bool OverrideCheckCodeFile(string                                               path,
-                                                 Dictionary<string, List<Dictionary<string, string>>> replaceDic)
+                                                 Dictionary<string, List<Dictionary<string, string>>> replaceDic,
+                                                 bool                                                 cover = false)
         {
-            string clsStr = RegionCheckReplace(path, replaceDic);
+            var clsStr = RegionCheckReplace(path, replaceDic, cover);
             if (clsStr == null)
             {
                 Debug.LogError("模板转化失败, path:" + path);
@@ -383,7 +384,7 @@ namespace YIUIFramework.Editor
 
             try
             {
-                path = path.Contains("Assets/") ? path : "Assets/" + path;
+                path = path.Contains("Assets/")? path : "Assets/" + path;
                 path = EditorHelper.GetProjPath(path);
                 string dir = Path.GetDirectoryName(path);
                 if (dir == null)
@@ -413,33 +414,44 @@ namespace YIUIFramework.Editor
         /// 需要区域内不存在才写入
         /// </summary>
         private static string RegionCheckReplace(string                                               path,
-                                                 Dictionary<string, List<Dictionary<string, string>>> replaceDic)
+                                                 Dictionary<string, List<Dictionary<string, string>>> replaceDic,
+                                                 bool                                                 cover = false)
         {
             var templateStr = File.ReadAllText(path);
 
             foreach (var item in replaceDic)
             {
-                var key       = item.Key;
-                var valueList = item.Value;
+                var key        = item.Key;
+                var valueList  = item.Value;
+                var startStr   = string.Format(m_StartSignFormat, key);
+                var endStr     = string.Format(m_EndSignFormat, key);
+                var startIndex = templateStr.IndexOf(startStr, StringComparison.Ordinal);
+                var endIndex   = templateStr.IndexOf(endStr, StringComparison.Ordinal);
+                if (startIndex <= -1 || endIndex <= startIndex)
+                {
+                    Debug.LogError($"{path} 此文件没有检查到关键字 {key} 请手动添加 关键字不允许移除");
+                    continue;
+                }
+
+                var tempStr = templateStr.Substring(startIndex, endIndex - startIndex).Replace(" ", "");
+
                 foreach (var data in valueList)
                 {
                     foreach (var ovDic in data)
                     {
-                        var check   = ovDic.Key;
+                        var check   = ovDic.Key.Replace(" ", "");
                         var content = ovDic.Value;
-
-                        string startStr = string.Format(m_StartSignFormat, key);
-                        string endStr   = string.Format(m_EndSignFormat, key);
-
-                        var startIndex = templateStr.IndexOf(startStr);
-                        var endIndex   = templateStr.IndexOf(endStr);
-
-                        if (startIndex > -1 && endIndex > startIndex)
+                        if (tempStr.IndexOf(check, StringComparison.Ordinal) <= -1)
                         {
-                            var tempStr = templateStr.Substring(startIndex, endIndex - startIndex);
-                            if (tempStr.IndexOf(check) <= -1)
+                            if (cover)
                             {
-                                templateStr = templateStr.Insert(endIndex - 1, content);
+                                //直接覆盖
+                                templateStr = templateStr.Substring(0, startIndex + startStr.Length) + content + templateStr.Substring(endIndex);
+                            }
+                            else
+                            {
+                                //添加到最后
+                                templateStr = templateStr.Insert(endIndex, content);
                             }
                         }
                     }

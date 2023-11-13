@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using Logger = YIUIFramework.Logger;
 
-namespace YIUIBind
+namespace YIUIFramework
 {
     [RequireComponent(typeof(TextMeshProUGUI))]
     [LabelText("Text 文本TMP")]

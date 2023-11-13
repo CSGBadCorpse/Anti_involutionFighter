@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Object = UnityEngine.Object;
-using Cysharp.Threading.Tasks;
+using ET;
 
 namespace YIUIFramework
 {
@@ -29,7 +29,7 @@ namespace YIUIFramework
         /// <summary>
         /// 异步加载 并实例化
         /// </summary>
-        internal static async UniTask<GameObject> LoadAssetAsyncInstantiate(string pkgName, string resName)
+        internal static async ETTask<GameObject> LoadAssetAsyncInstantiate(string pkgName, string resName)
         {
             var asset = await LoadAssetAsync<GameObject>(pkgName, resName);
             if (asset == null) return null;

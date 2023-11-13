@@ -10,7 +10,7 @@ using Sirenix.Serialization;
 using UnityEngine;
 using Logger = YIUIFramework.Logger;
 
-namespace YIUIBind
+namespace YIUIFramework
 {
     /// <summary>
     /// bool类型基类

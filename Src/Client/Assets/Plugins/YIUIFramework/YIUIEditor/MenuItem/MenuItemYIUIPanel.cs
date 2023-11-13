@@ -1,7 +1,7 @@
 ﻿#if UNITY_EDITOR
+using ET.Client;
 using UnityEditor;
 using UnityEngine;
-using YIUIBind;
 
 namespace YIUIFramework.Editor
 {
@@ -13,8 +13,7 @@ namespace YIUIFramework.Editor
             var activeObject = Selection.activeObject as DefaultAsset;
             if (activeObject == null)
             {
-                UnityTipsHelper.ShowError(
-                    $"请在路径 {UIStaticHelper.UIProjectResPath}/xxx/{UIStaticHelper.UISource} 下右键创建");
+                UnityTipsHelper.ShowError($"请在路径 {UIStaticHelper.UIProjectResPath}/xxx/{UIStaticHelper.UISource} 下右键创建");
                 return;
             }
 
@@ -23,8 +22,7 @@ namespace YIUIFramework.Editor
             if (activeObject.name != UIStaticHelper.UISource ||
                 !path.Contains(UIStaticHelper.UIProjectResPath))
             {
-                UnityTipsHelper.ShowError(
-                    $"请在路径 {UIStaticHelper.UIProjectResPath}/xxx/{UIStaticHelper.UISource} 下右键创建");
+                UnityTipsHelper.ShowError($"请在路径 {UIStaticHelper.UIProjectResPath}/xxx/{UIStaticHelper.UISource} 下右键创建");
                 return;
             }
 
@@ -35,17 +33,16 @@ namespace YIUIFramework.Editor
         {
             if (!path.Contains(UIStaticHelper.UIProjectResPath))
             {
-                UnityTipsHelper.ShowError(
-                    $"请在路径 {UIStaticHelper.UIProjectResPath}/xxx/{UIStaticHelper.UISource} 下右键创建");
+                UnityTipsHelper.ShowError($"请在路径 {UIStaticHelper.UIProjectResPath}/xxx/{UIStaticHelper.UISource} 下右键创建");
                 return;
             }
 
             var saveName = string.IsNullOrEmpty(name)
-                ? UIStaticHelper.UIYIUIPanelSourceName
-                : $"{name}{UIStaticHelper.UIPanelSourceName}";
+                    ? UIStaticHelper.UIYIUIPanelSourceName
+                    : $"{name}{UIStaticHelper.UIPanelSourceName}";
             var savePath = $"{path}/{saveName}.prefab";
 
-            if (AssetDatabase.LoadAssetAtPath(savePath, typeof(Object)) != null)
+            if (AssetDatabase.LoadAssetAtPath(savePath, typeof (Object)) != null)
             {
                 UnityTipsHelper.ShowError($"已存在 请先重命名 {saveName}");
                 return;
@@ -67,9 +64,9 @@ namespace YIUIFramework.Editor
                 return;
             }
 
-            if (activeObject.name != PanelMgr.UILayerRootName)
+            if (activeObject.name != YIUIMgrComponent.UILayerRootName)
             {
-                UnityTipsHelper.ShowError($"只能在指定的 {PanelMgr.UILayerRootName} 下使用 快捷创建Panel");
+                UnityTipsHelper.ShowError($"只能在指定的 {YIUIMgrComponent.UILayerRootName} 下使用 快捷创建Panel");
                 return;
             }
 
@@ -85,8 +82,8 @@ namespace YIUIFramework.Editor
             var cdeTable = panelObject.GetOrAddComponent<UIBindCDETable>();
             cdeTable.UICodeType  = EUICodeType.Panel;
             cdeTable.IsSplitData = true;
-
-            //cdeTable.PanelOption |= EPanelOption.DisReset; //如果想要都是默认缓存界面可开启
+            cdeTable.PanelOption |= EPanelOption.TimeCache;
+            
             var panelEditorData = cdeTable.PanelSplitData;
             panelEditorData.Panel = panelObject;
             panelObject.name      = UIStaticHelper.UIYIUIPanelSourceName;
@@ -102,7 +99,6 @@ namespace YIUIFramework.Editor
             backgroundObject.name = "UIBlockBG";
             backgroundRect.SetParent(panelRect, false);
             backgroundRect.ResetToFullScreen();
-
 
             // 添加allView节点
             var allViewObject = new GameObject();

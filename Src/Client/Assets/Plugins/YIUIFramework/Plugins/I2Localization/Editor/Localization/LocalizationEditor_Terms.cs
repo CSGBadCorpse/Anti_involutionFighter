@@ -570,12 +570,12 @@ namespace I2.Loc
 				mKeyListFilterRect = GUILayoutUtility.GetLastRect();
                 mKeyListFilterRect.xMax += 4;
 
-                KeyList_Filter = GUITools.TextField( mKeyListFilterRect, KeyList_Filter, 255, GUI.skin.GetStyle( "ToolbarSeachTextField" ), KeyListFilterID );
+                //KeyList_Filter = GUITools.TextField( mKeyListFilterRect, KeyList_Filter, 255, GUI.skin.GetStyle( "ToolbarSeachTextField" ), KeyListFilterID );
+                KeyList_Filter = GUITools.TextField( mKeyListFilterRect, KeyList_Filter, 255, GUI.skin.GetStyle( "TextField" ), KeyListFilterID );
 			}
-
-
-
-			if (GUILayout.Button( string.Empty, string.IsNullOrEmpty( KeyList_Filter ) ? "ToolbarSeachCancelButtonEmpty" : "ToolbarSeachCancelButton", GUILayout.ExpandWidth( false ) ))
+			
+			//if (GUILayout.Button( string.Empty, string.IsNullOrEmpty( KeyList_Filter ) ? "ToolbarSeachCancelButtonEmpty" : "ToolbarSeachCancelButton", GUILayout.ExpandWidth( false ) ))
+			if (GUILayout.Button( string.Empty, string.IsNullOrEmpty( KeyList_Filter ) ? "Button" : "Button", GUILayout.ExpandWidth( false ) ))
 			{
 				KeyList_Filter = string.Empty;
 				EditorApplication.update += RepaintScene;

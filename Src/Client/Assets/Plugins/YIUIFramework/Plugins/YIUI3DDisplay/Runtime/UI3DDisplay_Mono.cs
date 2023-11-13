@@ -1,7 +1,6 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
-using YIUIBind;
 
 namespace YIUIFramework
 {
@@ -51,8 +50,7 @@ namespace YIUIFramework
         {
             if (m_ShowObject == null || m_ShowTexture != null) return;
 
-            m_ShowTexture = RenderTexture.GetTemporary(
-                m_ResolutionX, m_ResolutionY, m_RenderTextureDepthBuffer);
+            m_ShowTexture = RenderTexture.GetTemporary(m_ResolutionX, m_ResolutionY, m_RenderTextureDepthBuffer);
 
             if (m_ShowImage != null)
             {

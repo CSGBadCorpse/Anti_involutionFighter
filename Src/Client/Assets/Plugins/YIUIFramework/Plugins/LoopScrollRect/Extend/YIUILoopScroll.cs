@@ -5,14 +5,16 @@
 //------------------------------------------------------------
 
 using System.Collections.Generic;
+using ET;
+using ET.Client;
 using UnityEngine;
 using UnityEngine.UI;
-using YIUIBind;
+using Object = UnityEngine.Object;
 
 namespace YIUIFramework
 {
-    public partial class YIUILoopScroll<TData, TItemRenderer> : LoopScrollPrefabSource, LoopScrollDataSource
-        where TItemRenderer : UIBase
+    public partial class YIUILoopScroll<TData, TItemRenderer>: LoopScrollPrefabSource, LoopScrollDataSource
+            where TItemRenderer : Entity, IYIUIBind, IYIUIInitialize
     {
         /// <summary>
         /// 列表项渲染器
@@ -23,25 +25,28 @@ namespace YIUIFramework
         /// <param name="select">是否被选中</param>
         public delegate void ListItemRenderer(int index, TData data, TItemRenderer item, bool select);
 
+        private Entity                               m_OwnerEntity;
         private ListItemRenderer                     m_ItemRenderer;
-        private UIBindVo                             m_BindVo;
+        private YIUIBindVo                           m_BindVo;
         private IList<TData>                         m_Data;
         private LoopScrollRect                       m_Owner;
         private ObjCache<TItemRenderer>              m_UIBasePool;
-        private Dictionary<Transform, TItemRenderer> m_ItemTransformDic = new Dictionary<Transform, TItemRenderer>();
+        private Dictionary<Transform, TItemRenderer> m_ItemTransformDic      = new Dictionary<Transform, TItemRenderer>();
         private Dictionary<Transform, int>           m_ItemTransformIndexDic = new Dictionary<Transform, int>();
 
         public YIUILoopScroll(
-            LoopScrollRect   owner,
-            ListItemRenderer itemRenderer)
+        Entity           ownerEneity,
+        LoopScrollRect   owner,
+        ListItemRenderer itemRenderer)
         {
-            var data = UIBindHelper.GetBindVoByType<TItemRenderer>();
+            var data = YIUIBindHelper.GetBindVoByType<TItemRenderer>();
             if (data == null) return;
             m_ItemTransformDic.Clear();
             m_ItemTransformIndexDic.Clear();
             m_BindVo             = data.Value;
             m_ItemRenderer       = itemRenderer;
             m_UIBasePool         = new ObjCache<TItemRenderer>(OnCreateItemRenderer);
+            m_OwnerEntity        = ownerEneity;
             m_Owner              = owner;
             m_Owner.prefabSource = this;
             m_Owner.dataSource   = this;
@@ -67,13 +72,14 @@ namespace YIUIFramework
             }
         }
 
+        //不应该初始化时有内容 所有不管是什么全部摧毁
         private void InitClearContent()
         {
-            //不应该初始化时有内容 所有不管是什么全部摧毁
-            for (var i = 0; i < Content.childCount; i++)
+            var count = Content.childCount;
+            for (var i = 0; i < count; i++)
             {
-                var child = Content.GetChild(i);
-                Object.Destroy(child.gameObject);
+                var child = Content.GetChild(0);
+                Object.DestroyImmediate(child.gameObject);
             }
         }
 
@@ -124,15 +130,15 @@ namespace YIUIFramework
 
         private TItemRenderer OnCreateItemRenderer()
         {
-            var uiBase = YIUIFactory.Instantiate<TItemRenderer>(m_BindVo);
-            AddItemRendererByDic(uiBase.OwnerRectTransform, uiBase);
+            var uiBase = YIUIFactory.Instantiate<TItemRenderer>(m_BindVo, m_OwnerEntity);
+            AddItemRendererByDic(uiBase.GetParent<YIUIComponent>().OwnerRectTransform, uiBase);
             return AddOnClickEvent(uiBase);
         }
 
         public GameObject GetObject(int index)
         {
             var uiBase = m_UIBasePool.Get();
-            return uiBase.OwnerGameObject;
+            return uiBase.GetParent<YIUIComponent>().OwnerGameObject;
         }
 
         public void ReturnObject(Transform transform)

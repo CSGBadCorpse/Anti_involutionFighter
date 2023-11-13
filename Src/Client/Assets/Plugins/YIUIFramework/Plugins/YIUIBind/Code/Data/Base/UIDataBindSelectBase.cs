@@ -11,7 +11,7 @@ using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using Logger = YIUIFramework.Logger;
 
-namespace YIUIBind
+namespace YIUIFramework
 {
     /// <summary>
     /// 基类 都需要选择绑定数据时

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace YIUIFramework
 {
-    public sealed class UI3DDisplayCamera : MonoBehaviour
+    public sealed class UI3DDisplayCamera: MonoBehaviour
     {
         private GameObject m_ShowObject;
 

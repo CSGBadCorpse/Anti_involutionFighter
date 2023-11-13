@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace YIUIBind
+namespace YIUIFramework
 {
     /// <summary>
     /// 改变绑定数据 配合 其他数据使用

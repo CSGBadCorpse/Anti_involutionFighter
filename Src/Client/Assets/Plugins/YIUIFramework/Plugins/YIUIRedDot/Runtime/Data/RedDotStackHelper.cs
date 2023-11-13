@@ -22,13 +22,11 @@ namespace YIUIFramework
             switch (self.RedDotOSType)
             {
                 case ERedDotOSType.Count:
-                    sb.AppendFormat(
-                        self.FirstData.ChangeData.Key == currentData.Key ? m_OsCountFormat : m_OsChildCountFormat,
+                    sb.AppendFormat(self.FirstData.ChangeData.Key == currentData.Key? m_OsCountFormat : m_OsChildCountFormat,
                         self.OriginalCount, self.ChangeCount);
                     break;
                 case ERedDotOSType.Tips:
-                    sb.AppendFormat(
-                        self.FirstData.ChangeData.Key == currentData.Key ? m_OsTipsFormat : m_OsChildTipsFormat,
+                    sb.AppendFormat(self.FirstData.ChangeData.Key == currentData.Key? m_OsTipsFormat : m_OsChildTipsFormat,
                         self.ChangeTips, self.OriginalCount, self.ChangeCount);
                     break;
                 default:
@@ -94,7 +92,7 @@ namespace YIUIFramework
         #region 存储的值
 
         private static BoolPrefs g_StackHideUnityEngineBoolPrefs =
-            new BoolPrefs("RedDot_StackHideUnityEngine", null, true);
+                new BoolPrefs("RedDot_StackHideUnityEngine", null, true);
 
         public static bool StackHideUnityEngine
         {
@@ -107,7 +105,7 @@ namespace YIUIFramework
         }
 
         private static BoolPrefs g_StackHideYIUIBindBoolPrefs =
-            new BoolPrefs("RedDot_StackHideYIUIBind", null, true);
+                new BoolPrefs("RedDot_StackHideYIUIBind", null, true);
 
         public static bool StackHideYIUIBind
         {
@@ -120,7 +118,7 @@ namespace YIUIFramework
         }
 
         private static BoolPrefs g_StackHideYIUIFrameworkBoolPrefs =
-            new BoolPrefs("RedDot_StackHideYIUIFramework", null, true);
+                new BoolPrefs("RedDot_StackHideYIUIFramework", null, true);
 
         public static bool StackHideYIUIFramework
         {
@@ -133,7 +131,7 @@ namespace YIUIFramework
         }
 
         private static BoolPrefs g_ShowStackIndexBoolPrefs =
-            new BoolPrefs("RedDot_ShowStackIndex", null, false);
+                new BoolPrefs("RedDot_ShowStackIndex", null, false);
 
         public static bool ShowStackIndex
         {
@@ -146,7 +144,7 @@ namespace YIUIFramework
         }
 
         private static BoolPrefs g_ShowFileNameStackBoolPrefs =
-            new BoolPrefs("RedDot_ShowFileNameStack", null, true);
+                new BoolPrefs("RedDot_ShowFileNameStack", null, true);
 
         public static bool ShowFileNameStack
         {
@@ -159,7 +157,7 @@ namespace YIUIFramework
         }
 
         private static BoolPrefs g_ShowFilePathBoolPrefs =
-            new BoolPrefs("RedDot_ShowFilePath", null, false);
+                new BoolPrefs("RedDot_ShowFilePath", null, false);
 
         public static bool ShowFilePath
         {
@@ -198,9 +196,10 @@ namespace YIUIFramework
         static readonly string m_FrameFormat = "{0} {1}.{2} : {3} : {4}";
         static readonly string m_FileFormat  = "\tFile: {0}";
 
-        static readonly string m_StackContinueUnityEngine   = "UnityEngine";
-        static readonly string m_StackContinueYIUIBind      = "YIUIBind";
-        static readonly string m_StackContinueYIUIFramework = "YIUIFramework";
+        static readonly string m_StackContinueUnityEngine    = "UnityEngine";
+        static readonly string m_StackContinueUnityEngineTMP = "TMP";
+        static readonly string m_StackContinueYIUIBind       = "YIUIBind";
+        static readonly string m_StackContinueYIUIFramework  = "YIUIFramework";
 
         /// <summary>
         /// 解析堆栈
@@ -226,10 +225,14 @@ namespace YIUIFramework
                     var stackNamespace = declaring.Namespace ?? ""; //命名空间
                     var className      = declaring.Name;            //类名
 
-
                     if (StackHideUnityEngine)
                     {
                         if (stackNamespace.Contains(m_StackContinueUnityEngine))
+                        {
+                            continue;
+                        }
+
+                        if (stackNamespace.Contains(m_StackContinueUnityEngineTMP))
                         {
                             continue;
                         }
@@ -252,7 +255,7 @@ namespace YIUIFramework
                     }
 
                     sb.Append(string.Format(m_FrameFormat,
-                        ShowStackIndex ? i.ToString() : "",          //堆栈索引
+                        ShowStackIndex? i.ToString() : "",           //堆栈索引
                         stackNamespace,                              //命名空间
                         className,                                   //类名
                         method.Name,                                 //方法名

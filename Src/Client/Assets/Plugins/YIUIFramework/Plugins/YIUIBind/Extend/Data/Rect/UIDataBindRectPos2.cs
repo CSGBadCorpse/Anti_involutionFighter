@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace YIUIBind
+namespace YIUIFramework
 {
     [Serializable]
     [LabelText("UI位置")]

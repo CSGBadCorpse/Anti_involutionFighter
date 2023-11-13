@@ -4,9 +4,9 @@
 // Data: 2023年2月12日
 //------------------------------------------------------------
 
-using System;
+using ET;
+using ET.Client;
 using UnityEngine;
-using Cysharp.Threading.Tasks;
 
 namespace YIUIFramework
 {
@@ -18,35 +18,35 @@ namespace YIUIFramework
             self.AutoReset();
         }
 
-        internal static UIBase CreateCommon(string pkgName, string resName, GameObject obj)
+        internal static Entity CreateCommon(string pkgName, string resName, GameObject obj, Entity parentEntity)
         {
-            var bingVo = UIBindHelper.GetBindVoByPath(pkgName, resName);
+            var bingVo = YIUIBindHelper.GetBindVoByPath(pkgName, resName);
             if (bingVo == null) return null;
             var vo = bingVo.Value;
-            return CreateByObjVo(vo, obj);
+            return CreateByObjVo(vo, obj, parentEntity);
         }
 
-        internal static UIBase CreatePanel(PanelInfo panelInfo)
+        internal static Entity CreatePanel(PanelInfo panelInfo, Entity parentEntity)
         {
-            return Create(panelInfo.PkgName, panelInfo.ResName);
+            return Create(panelInfo.PkgName, panelInfo.ResName, parentEntity);
         }
 
-        private static T Create<T>() where T : UIBase
+        private static T Create<T>(Entity parentEntity) where T : Entity
         {
-            var data = UIBindHelper.GetBindVoByType<T>();
+            var data = YIUIBindHelper.GetBindVoByType<T>();
             if (data == null) return null;
             var vo = data.Value;
 
-            return (T)Create(vo);
+            return (T)Create(vo, parentEntity);
         }
 
-        private static UIBase Create(string pkgName, string resName)
+        private static Entity Create(string pkgName, string resName, Entity parentEntity)
         {
-            var bingVo = UIBindHelper.GetBindVoByPath(pkgName, resName);
-            return bingVo == null ? null : Create(bingVo.Value);
+            var bingVo = YIUIBindHelper.GetBindVoByPath(pkgName, resName);
+            return bingVo == null? null : Create(bingVo.Value, parentEntity);
         }
 
-        private static UIBase Create(UIBindVo vo)
+        private static Entity Create(YIUIBindVo vo, Entity parentEntity)
         {
             var obj = YIUILoadHelper.LoadAssetInstantiate(vo.PkgName, vo.ResName);
             if (obj == null)
@@ -55,10 +55,10 @@ namespace YIUIFramework
                 return null;
             }
 
-            return CreateByObjVo(vo, obj);
+            return CreateByObjVo(vo, obj, parentEntity);
         }
 
-        private static UIBase CreateByObjVo(UIBindVo vo, GameObject obj)
+        internal static Entity CreateByObjVo(YIUIBindVo vo, GameObject obj, Entity parentEntity)
         {
             var cdeTable = obj.GetComponent<UIBindCDETable>();
             if (cdeTable == null)
@@ -67,13 +67,14 @@ namespace YIUIFramework
                 return null;
             }
 
-            cdeTable.CreateComponent();
-            var uiBase = (UIBase)Activator.CreateInstance(vo.CreatorType);
-            uiBase.InitUIBase(vo, obj);
-            return uiBase;
+            var uiBase    = parentEntity.AddChild<YIUIComponent, YIUIBindVo, GameObject>(vo, obj);
+            var component = uiBase.AddYIUIChild(vo.ComponentType);
+            cdeTable.CreateComponent(component);
+            uiBase.InitOwnerUIEntity(component); //这里就是要晚于其他内部组件这样才能访问时别人已经初始化好了
+            return component;
         }
 
-        private static void CreateComponent(this UIBindCDETable cdeTable)
+        private static void CreateComponent(this UIBindCDETable cdeTable, Entity parentEntity)
         {
             foreach (var childCde in cdeTable.AllChildCdeTable)
             {
@@ -83,13 +84,15 @@ namespace YIUIFramework
                     continue;
                 }
 
-                var bingVo = UIBindHelper.GetBindVoByPath(childCde.PkgName, childCde.ResName);
-                if (bingVo == null) continue;
+                var data = YIUIBindHelper.GetBindVoByPath(childCde.PkgName, childCde.ResName);
+                if (data == null) continue;
+                var vo = data.Value;
 
-                var childBase = (UIBase)Activator.CreateInstance(bingVo.Value.CreatorType);
-                childCde.CreateComponent();
-                childBase.InitUIBase(bingVo.Value, childCde.gameObject);
-                cdeTable.AddUIBase(childCde.gameObject.name, childBase);
+                var uiBase    = parentEntity.AddChild<YIUIComponent, YIUIBindVo, GameObject>(vo, childCde.gameObject);
+                var component = uiBase.AddYIUIChild(vo.ComponentType);
+                cdeTable.AddUIOwner(childCde.gameObject.name, component);
+                childCde.CreateComponent(component);
+                uiBase.InitOwnerUIEntity(component); //这里就是要晚于其他内部组件这样才能访问时别人已经初始化好了
             }
         }
     }

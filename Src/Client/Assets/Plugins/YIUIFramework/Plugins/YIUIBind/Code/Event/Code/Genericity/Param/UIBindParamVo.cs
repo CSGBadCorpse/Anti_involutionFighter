@@ -2,7 +2,7 @@
 using System.Collections;
 using YIUIFramework;
 
-namespace YIUIBind
+namespace YIUIFramework
 {
     public class UIBindParamVo
     {

@@ -5,58 +5,59 @@
 //------------------------------------------------------------
 
 using System;
+using ET;
+using ET.Client;
 using UnityEngine;
-using Cysharp.Threading.Tasks;
 
 namespace YIUIFramework
 {
     public static partial class YIUIFactory
     {
-        public static T Instantiate<T>(RectTransform parent = null) where T : UIBase
+        public static T Instantiate<T>(Entity parentEntity, RectTransform parent = null) where T : Entity
         {
-            var data = UIBindHelper.GetBindVoByType<T>();
+            var data = YIUIBindHelper.GetBindVoByType<T>();
             if (data == null) return null;
             var vo = data.Value;
 
-            return Instantiate<T>(vo, parent);
+            return Instantiate<T>(vo, parentEntity, parent);
         }
 
-        public static T Instantiate<T>(UIBindVo vo, RectTransform parent = null) where T : UIBase
+        public static T Instantiate<T>(YIUIBindVo vo, Entity parentEntity, RectTransform parent = null) where T : Entity
         {
-            var instance = (T)Create(vo);
+            var instance = (T)Create(vo, parentEntity);
             if (instance == null) return null;
 
-            SetParent(instance.OwnerRectTransform, parent ? parent : PanelMgr.Inst.UICache);
+            SetParent(instance.GetParent<YIUIComponent>().OwnerRectTransform, parent? parent : YIUIMgrComponent.Inst.UICache);
 
             return instance;
         }
 
-        public static UIBase Instantiate(Type uiType, RectTransform parent = null)
+        public static Entity Instantiate(Type uiType, Entity parentEntity, RectTransform parent = null)
         {
-            var data = UIBindHelper.GetBindVoByType(uiType);
+            var data = YIUIBindHelper.GetBindVoByType(uiType);
             if (data == null) return null;
             var vo = data.Value;
 
-            return Instantiate(vo, parent);
+            return Instantiate(vo, parentEntity, parent);
         }
 
-        public static UIBase Instantiate(UIBindVo vo, RectTransform parent = null)
+        public static Entity Instantiate(YIUIBindVo vo, Entity parentEntity, RectTransform parent = null)
         {
-            var instance = Create(vo);
+            var instance = Create(vo, parentEntity);
             if (instance == null) return null;
 
-            SetParent(instance.OwnerRectTransform, parent ? parent : PanelMgr.Inst.UICache);
+            SetParent(instance.GetParent<YIUIComponent>().OwnerRectTransform, parent? parent : YIUIMgrComponent.Inst.UICache);
 
             return instance;
         }
 
-        public static UIBase Instantiate(string pkgName, string resName, RectTransform parent = null)
+        public static Entity Instantiate(string pkgName, string resName, Entity parentEntity, RectTransform parent = null)
         {
-            var data = UIBindHelper.GetBindVoByPath(pkgName, resName);
+            var data = YIUIBindHelper.GetBindVoByPath(pkgName, resName);
             if (data == null) return null;
             var vo = data.Value;
 
-            return Instantiate(vo, parent);
+            return Instantiate(vo, parentEntity, parent);
         }
     }
 }

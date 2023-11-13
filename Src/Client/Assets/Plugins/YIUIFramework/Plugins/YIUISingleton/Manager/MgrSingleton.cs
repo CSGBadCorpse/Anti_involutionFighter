@@ -1,4 +1,4 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using ET;
 using UnityEngine;
 
 namespace YIUIFramework
@@ -14,7 +14,7 @@ namespace YIUIFramework
 
         public bool InitedSucceed => m_InitedSucceed;
 
-        public async UniTask<bool> ManagerAsyncInit()
+        public async ETTask<bool> ManagerAsyncInit()
         {
             if (m_InitedSucceed)
             {
@@ -46,9 +46,9 @@ namespace YIUIFramework
             //密封初始化方法 必须使用异步
         }
 
-        protected virtual async UniTask<bool> MgrAsyncInit()
+        protected virtual async ETTask<bool> MgrAsyncInit()
         {
-            await UniTask.CompletedTask;
+            await ETTask.CompletedTask;
             return true;
         }
     }

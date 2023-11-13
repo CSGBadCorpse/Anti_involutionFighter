@@ -1,9 +1,8 @@
 #if UNITY_EDITOR
-using System.IO;
+using ET.Client;
 using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
-using YIUIBind;
 
 namespace YIUIFramework.Editor
 {
@@ -28,13 +27,13 @@ namespace YIUIFramework.Editor
         [FolderPath]
         [ShowInInspector]
         [ReadOnly]
-        private const string UIGenerationPath = UIStaticHelper.UIGenerationPath;
+        private const string UIGenerationPath = UIStaticHelper.UIETComponentGenPath;
 
         [LabelText("YIUI项目自定义脚本路径")]
         [FolderPath]
         [ShowInInspector]
         [ReadOnly]
-        private const string UICodeScriptsPath = UIStaticHelper.UICodeScriptsPath;
+        private const string UICodeScriptsPath = UIStaticHelper.UIETSystemGenPath;
 
         [HideLabel]
         [ShowInInspector]
@@ -74,7 +73,7 @@ namespace YIUIFramework.Editor
 
             var newGameObj = Object.Instantiate(loadRoot);
             var commonPath =
-                $"{UIProjectResPath}/{m_CommonPkg}/{UIStaticHelper.UIPrefabs}/{PanelMgr.UIRootName}.prefab";
+                $"{UIProjectResPath}/{m_CommonPkg}/{UIStaticHelper.UIPrefabs}/{YIUIMgrComponent.UIRootName}.prefab";
             PrefabUtility.SaveAsPrefabAsset(newGameObj, commonPath);
             Object.DestroyImmediate(newGameObj);
         }

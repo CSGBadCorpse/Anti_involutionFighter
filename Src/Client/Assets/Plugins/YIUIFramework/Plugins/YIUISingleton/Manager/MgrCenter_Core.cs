@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Cysharp.Threading.Tasks;
+using ET;
 using Debug = UnityEngine.Debug;
 
 namespace YIUIFramework
@@ -18,7 +18,7 @@ namespace YIUIFramework
             private List<IManagerFixedUpdate> m_MgrFixedUpdateList = new List<IManagerFixedUpdate>();
             private HashSet<IManager>         m_CacheInitMgr       = new HashSet<IManager>();
 
-            public async UniTask<bool> Add(IManager manager)
+            public async ETTask<bool> Add(IManager manager)
             {
                 if (m_MgrList.Contains(manager))
                 {

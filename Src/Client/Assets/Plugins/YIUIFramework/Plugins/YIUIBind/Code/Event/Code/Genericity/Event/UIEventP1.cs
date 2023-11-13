@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using YIUIFramework;
 using Logger = YIUIFramework.Logger;
 
-namespace YIUIBind
+namespace YIUIFramework
 {
     public class UIEventP1<P1> : UIEventBase, IUIEventInvoke<P1>
     {

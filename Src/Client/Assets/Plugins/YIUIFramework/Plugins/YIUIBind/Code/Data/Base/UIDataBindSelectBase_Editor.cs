@@ -6,7 +6,7 @@ using Sirenix.OdinInspector;
 using YIUIFramework;
 using Logger = YIUIFramework.Logger;
 
-namespace YIUIBind
+namespace YIUIFramework
 {
     public abstract partial class UIDataBindSelectBase
     {

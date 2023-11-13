@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
-namespace YIUIBind
+namespace YIUIFramework
 {
     /// <summary>
     /// 点击事件绑定
@@ -16,17 +15,14 @@ namespace YIUIBind
     [InfoBox("提示: 可用事件参数 1个")]
     [LabelText("点击<String>")]
     [AddComponentMenu("YIUIBind/Event/点击 【Click String】 UIEventBindClickString")]
-    public class UIEventBindClickString : UIEventBindClick
+    public class UIEventBindClickString: UIEventBindClick
     {
         [SerializeField]
         [LabelText("额外string参数值")]
         private string m_ExtraParam;
 
         [NonSerialized]
-        private List<EUIEventParamType> m_FilterParamType = new List<EUIEventParamType>
-        {
-            EUIEventParamType.String,
-        };
+        private List<EUIEventParamType> m_FilterParamType = new List<EUIEventParamType> { EUIEventParamType.String, };
 
         protected override List<EUIEventParamType> GetFilterParamType()
         {

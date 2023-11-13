@@ -2,7 +2,7 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace YIUIBind
+namespace YIUIFramework
 {
     [RequireComponent(typeof(Animation))]
     [DetailedInfoBox("注意动画组件的 自动播放不要勾选",

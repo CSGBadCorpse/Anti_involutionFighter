@@ -6,7 +6,8 @@
 
 using System;
 using Object = UnityEngine.Object;
-using Cysharp.Threading.Tasks;
+using ET;
+using ET;
 
 namespace YIUIFramework
 {
@@ -23,7 +24,7 @@ namespace YIUIFramework
         public static Func<string, string, Type, (Object, int)> LoadAssetFunc { internal get; set; }
 
         //异步加载方法
-        public static Func<string, string, Type, UniTask<(Object, int)>> LoadAssetAsyncFunc { internal get; set; }
+        public static Func<string, string, Type, ETTask<(Object, int)>> LoadAssetAsyncFunc { internal get; set; }
 
         //验证是否有效
         public static Func<string, string, bool> VerifyAssetValidityFunc { internal get; set; }

@@ -1,4 +1,4 @@
-﻿namespace YIUIBind
+﻿namespace YIUIFramework
 {
     //应该不用扩展了 5个参数你都不够用嘛
     //如果有请包起来用参数类sy

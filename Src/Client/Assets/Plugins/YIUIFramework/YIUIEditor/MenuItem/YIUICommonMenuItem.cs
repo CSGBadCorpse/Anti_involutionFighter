@@ -1,7 +1,7 @@
 ﻿#if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
-using YIUIBind;
+
 
 namespace YIUIFramework.Editor
 {
@@ -20,6 +20,12 @@ namespace YIUIFramework.Editor
             Selection.activeObject = UIMenuItemHelper.CloneGameObjectByPath(path, activeObject.transform);
         }
 
+        [MenuItem("GameObject/YIUI/UIBlockBG", false, 100000)]
+        private static void CreateText_UIBlockBG()
+        {
+            CreateTarget("UIBlockBG");
+        }
+        
         [MenuItem("GameObject/YIUI/Text_NoRaycast", false, 100001)]
         private static void CreateText_NoRaycast()
         {

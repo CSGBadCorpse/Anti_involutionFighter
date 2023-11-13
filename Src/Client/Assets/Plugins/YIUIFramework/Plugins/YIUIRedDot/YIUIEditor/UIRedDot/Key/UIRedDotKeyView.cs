@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;
-using YIUIBind;
+
 
 namespace YIUIFramework.Editor
 {

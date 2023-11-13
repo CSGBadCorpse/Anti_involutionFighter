@@ -3,7 +3,7 @@ using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;
 
-namespace YIUIBind
+namespace YIUIFramework
 {
     [Serializable]
     [HideReferenceObjectPicker]

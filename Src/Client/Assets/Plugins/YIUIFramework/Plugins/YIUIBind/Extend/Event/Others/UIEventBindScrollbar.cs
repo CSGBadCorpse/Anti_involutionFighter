@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Logger = YIUIFramework.Logger;
 
-namespace YIUIBind
+namespace YIUIFramework
 {
     [InfoBox("提示: 可用事件参数 <参数1:float(当前滚动值 0-1)>")]
     [LabelText("滚动条<Float>")]

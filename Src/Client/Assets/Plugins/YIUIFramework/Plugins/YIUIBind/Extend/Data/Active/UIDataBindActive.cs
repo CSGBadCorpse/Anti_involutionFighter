@@ -2,7 +2,7 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace YIUIBind
+namespace YIUIFramework
 {
     [LabelText("GameObject的显隐")]
     [AddComponentMenu("YIUIBind/Data/显隐 【Active】 UIDataBindActive")]

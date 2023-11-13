@@ -6,7 +6,7 @@
 
 using System;
 using System.Collections.Generic;
-using Cysharp.Threading.Tasks;
+using ET;
 using UnityEngine;
 
 namespace YIUIFramework
@@ -14,7 +14,7 @@ namespace YIUIFramework
     /// <summary>
     /// 红点 管理器
     /// </summary>
-    public partial class RedDotMgr : MgrSingleton<RedDotMgr>, IManagerAsyncInit
+    public partial class RedDotMgr: MgrSingleton<RedDotMgr>, IManagerAsyncInit
     {
         private const bool SyncSetCount = false; //实时修改红点还是异步脏标定时修改
 
@@ -31,7 +31,7 @@ namespace YIUIFramework
             DisposeDirty();
         }
 
-        protected async override UniTask<bool> MgrAsyncInit()
+        protected override async ETTask<bool> MgrAsyncInit()
         {
             var resultConfig = await LoadConfigAsset();
             if (!resultConfig) return false;
@@ -51,7 +51,7 @@ namespace YIUIFramework
         /// <summary>
         /// 加载config
         /// </summary>
-        private async UniTask<bool> LoadConfigAsset()
+        private async ETTask<bool> LoadConfigAsset()
         {
             m_RedDotConfigAsset = await YIUILoadHelper.LoadAssetAsync<RedDotConfigAsset>(RedDotConfigAssetName);
 
@@ -74,7 +74,7 @@ namespace YIUIFramework
         {
             m_AllRedDotData.Clear();
 
-            foreach (ERedDotKeyType key in Enum.GetValues(typeof(ERedDotKeyType)))
+            foreach (ERedDotKeyType key in Enum.GetValues(typeof (ERedDotKeyType)))
             {
                 //有配置则使用配置 没有则使用默认配置
                 var config = m_RedDotConfigAsset.GetConfigData(key) ?? new RedDotConfigData { Key = key };

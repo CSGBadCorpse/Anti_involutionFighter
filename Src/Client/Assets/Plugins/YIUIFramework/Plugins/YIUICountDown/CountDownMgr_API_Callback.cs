@@ -104,7 +104,7 @@ namespace YIUIFramework
                         double        totalTime,
                         double        interval,
                         bool          forever,
-                        bool          startCallback = false)
+                        bool          startCallback)
         {
             if (timerCallback == null)
             {

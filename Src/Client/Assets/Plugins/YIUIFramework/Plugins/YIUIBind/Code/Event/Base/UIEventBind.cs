@@ -5,7 +5,7 @@ using UnityEngine;
 using YIUIFramework;
 using Logger = YIUIFramework.Logger;
 
-namespace YIUIBind
+namespace YIUIFramework
 {
     [ExecuteInEditMode]
     public abstract partial class UIEventBind : SerializedMonoBehaviour

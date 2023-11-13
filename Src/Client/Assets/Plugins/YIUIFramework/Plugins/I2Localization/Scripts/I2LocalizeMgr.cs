@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using Cysharp.Threading.Tasks;
+using ET;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using YIUIFramework;
@@ -10,7 +10,7 @@ using Object = UnityEngine.Object;
 namespace I2.Loc
 {
     [RequireComponent(typeof(LanguageSource))]
-    public class I2LocalizeMgr : MonoSceneSingleton<I2LocalizeMgr>, IResourceManager_Bundles
+    public class I2LocalizeMgr : MonoSingleton<I2LocalizeMgr>, IResourceManager_Bundles
     {
         [SerializeField]
         [ReadOnly]
@@ -91,17 +91,17 @@ namespace I2.Loc
 
             return allLanguage;
         }
-
-        private void OnValidate()
-        {
-            m_LanguageSource ??= GetComponent<LanguageSource>();
-        }
-
+        
         #endif
 
         #endregion
 
-        protected override async UniTask<bool> MgrAsyncInit()
+        protected override bool GetHideAndDontSave()
+        {
+            return false;
+        }
+        
+        protected override async ETTask<bool> MgrAsyncInit()
         {
             if (string.IsNullOrEmpty(m_DefaultLanguage))
             {
@@ -112,6 +112,8 @@ namespace I2.Loc
                 return false;
             }
 
+            m_LanguageSource = this.GetComponent<LanguageSource>();
+            
             #if UNITY_EDITOR
             if (!m_UseRuntimeModule)
             {
@@ -133,7 +135,7 @@ namespace I2.Loc
         }
         
         //根据需求可提前加载语言
-        public async UniTask LoadLanguage(string language, bool setCurrent = false)
+        public async ETTask LoadLanguage(string language, bool setCurrent = false)
         {
             #if UNITY_EDITOR
             if (!m_UseRuntimeModule)
@@ -208,7 +210,7 @@ namespace I2.Loc
             {
                 if (load)
                 {
-                    LoadLanguage(language, true).Forget();
+                    LoadLanguage(language, true).Coroutine();
                     return true;
                 }
 

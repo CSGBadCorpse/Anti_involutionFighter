@@ -10,7 +10,7 @@ using Sirenix.Serialization;
 using UnityEngine;
 using Logger = YIUIFramework.Logger;
 
-namespace YIUIBind
+namespace YIUIFramework
 {
     //[DetailedInfoBox("UI 组件表 点击展开详细介绍", @"李胜扬")]
     [LabelText("UI 组件表")]

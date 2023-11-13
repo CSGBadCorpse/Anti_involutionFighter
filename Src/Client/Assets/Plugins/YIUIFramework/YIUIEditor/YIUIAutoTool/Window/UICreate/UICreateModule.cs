@@ -1,8 +1,6 @@
 ﻿#if UNITY_EDITOR
-using System;
-using System.Text.RegularExpressions;
 using System.Collections.Generic;
-using YIUIBind;
+using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEngine;
 
@@ -38,7 +36,6 @@ namespace YIUIFramework.Editor
             var is9= UnityEditor.PrefabUtility.IsPartOfPrefabThatCanBeAppliedTo(cdeTable);
             */
 
-
             var checkInstance = PrefabUtility.IsPartOfPrefabInstance(cdeTable);
             if (checkInstance)
             {
@@ -59,6 +56,7 @@ namespace YIUIFramework.Editor
                 return;
             }
 
+            //component信息
             var createBaseData = new UICreateBaseData
             {
                 AutoRefresh   = refresh,
@@ -66,66 +64,58 @@ namespace YIUIFramework.Editor
                 Namespace     = UIStaticHelper.UINamespace,
                 PkgName       = cdeTable.PkgName,
                 ResName       = cdeTable.ResName,
-                BaseClass     = GetBaseClass(cdeTable),
+                CodeType      = cdeTable.UICodeType,
+                PanelLayer    = cdeTable.PanelLayer,
                 Variables     = UICreateVariables.Get(cdeTable),
+                UIFriend      = UICreateBind.GetFriend(cdeTable),
+                UIBase        = UICreateBind.GetBase(cdeTable),
                 UIBind        = UICreateBind.GetBind(cdeTable),
                 UIUnBind      = UICreateBind.GetUnBind(cdeTable),
                 VirtualMethod = UICreateMethod.Get(cdeTable),
                 PanelViewEnum = UICreatePanelViewEnum.Get(cdeTable),
             };
 
-            new UICreateBaseCode(out var resultBase, YIUIAutoTool.Author, createBaseData);
+            //自定义的component
+            new UICreateComponentCode(out var resultComponent, YIUIAutoTool.Author, createBaseData);
 
-            if (!resultBase) return;
+            //生成的system
+            new UICreateSystemGenCode(out var resultSystemGen, YIUIAutoTool.Author, createBaseData);
 
+            //system信息
+            var createSystemData = new UICreateSystemData
+            {
+                AutoRefresh = refresh,
+                ShowTips    = tips,
+                Namespace   = UIStaticHelper.UINamespace,
+                PkgName     = cdeTable.PkgName,
+                ResName     = cdeTable.ResName,
+                OverrideDic = UICreateMethod.GetSystemEventOverrideDic(cdeTable),
+                CoverDic    = UICreateMethod.CoverSystemDefaultEventDic(cdeTable),
+            };
 
+            //生成的component
+            //自定义的system
+            //目前看上去3个都一样 是特意设定的 以后可独立扩展
             if (cdeTable.UICodeType == EUICodeType.Panel)
             {
-                var createPanelData = new UICreatePanelData
-                {
-                    AutoRefresh = refresh,
-                    ShowTips    = tips,
-                    Namespace   = UIStaticHelper.UINamespace,
-                    PkgName     = cdeTable.PkgName,
-                    ResName     = cdeTable.ResName,
-                    OverrideDic = UICreateMethod.GetEventOverrideDic(cdeTable),
-                };
-
-                new UICreatePanelCode(out var result, YIUIAutoTool.Author, createPanelData);
-
-                if (!result) return;
+                new UICreatePanelSystemCode(out var resultSystem, YIUIAutoTool.Author, createSystemData);
+                if (!resultSystem) return;
+                new UICreateComponentGenCode(out var resultComponentBase, YIUIAutoTool.Author, createBaseData);
+                if (!resultComponentBase) return;
             }
             else if (cdeTable.UICodeType == EUICodeType.View)
             {
-                var createViewData = new UICreateViewData
-                {
-                    AutoRefresh = refresh,
-                    ShowTips    = tips,
-                    Namespace   = UIStaticHelper.UINamespace,
-                    PkgName     = cdeTable.PkgName,
-                    ResName     = cdeTable.ResName,
-                    OverrideDic = UICreateMethod.GetEventOverrideDic(cdeTable),
-                };
-
-                new UICreateViewCode(out var result, YIUIAutoTool.Author, createViewData);
-
-                if (!result) return;
+                new UICreateViewSystemCode(out var resultSystem, YIUIAutoTool.Author, createSystemData);
+                if (!resultSystem) return;
+                new UICreateComponentGenCode(out var resultComponentBase, YIUIAutoTool.Author, createBaseData);
+                if (!resultComponentBase) return;
             }
-            else if (cdeTable.UICodeType == EUICodeType.Component)
+            else if (cdeTable.UICodeType == EUICodeType.Common)
             {
-                var createComponentData = new UICreateComponentData //目前看上去3个DATA都一样 是特意设定的 以后可独立扩展
-                {
-                    AutoRefresh = refresh,
-                    ShowTips    = tips,
-                    Namespace   = UIStaticHelper.UINamespace,
-                    PkgName     = cdeTable.PkgName,
-                    ResName     = cdeTable.ResName,
-                    OverrideDic = UICreateMethod.GetEventOverrideDic(cdeTable),
-                };
-
-                new UICreateComponentCode(out var result, YIUIAutoTool.Author, createComponentData);
-
-                if (!result) return;
+                new UICreateCommonSystemCode(out var resultSystem, YIUIAutoTool.Author, createSystemData);
+                if (!resultSystem) return;
+                new UICreateCommonComponentGenCode(out var resultComponentBase, YIUIAutoTool.Author, createBaseData);
+                if (!resultComponentBase) return;
             }
             else
             {
@@ -135,30 +125,13 @@ namespace YIUIFramework.Editor
             AssetDatabase.Refresh();
         }
 
-        private static string GetBaseClass(UIBindCDETable cdeTable)
-        {
-            switch (cdeTable.UICodeType)
-            {
-                case EUICodeType.Panel:
-                    return UIStaticHelper.UIBasePanelName;
-                case EUICodeType.View:
-                    return UIStaticHelper.UIBaseViewName;
-                case EUICodeType.Component:
-                    return UIStaticHelper.UIBaseComponentName;
-                default:
-                    Debug.LogError($"是否新增了类型????");
-                    return UIStaticHelper.UIBaseName;
-
-            }
-        }
-
         private static string GetRegionEvent(UIBindCDETable cdeTable)
         {
             if (cdeTable.EventTable == null || cdeTable.EventTable.EventDic == null)
                 return "";
             return cdeTable.EventTable.EventDic.Count <= 0
-                ? ""
-                : "        #region Event开始\r\n\r\n        #endregion Event结束";
+                    ? ""
+                    : "        #region YIUIEvent开始\r\n\r\n        #endregion YIUIEvent结束";
         }
 
         internal static bool InitVoName(UIBindCDETable cdeTable)

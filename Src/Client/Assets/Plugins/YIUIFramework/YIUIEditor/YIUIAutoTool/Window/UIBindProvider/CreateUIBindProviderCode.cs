@@ -18,7 +18,7 @@ namespace YIUIFramework.Editor
         public CreateUIBindProviderCode(out bool result, string authorName, UIBindProviderData codeData) : base(
             authorName)
         {
-            var path     = $"{UIStaticHelper.UIGenerationPath}/{codeData.Name}.cs";
+            var path     = $"{UIStaticHelper.UIETComponentGenPath}/{codeData.Name}.cs";
             var template = $"{UIStaticHelper.UITemplatePath}/UIBindProviderTemplate.txt";
             CreateVo = new CreateVo(template, path);
 

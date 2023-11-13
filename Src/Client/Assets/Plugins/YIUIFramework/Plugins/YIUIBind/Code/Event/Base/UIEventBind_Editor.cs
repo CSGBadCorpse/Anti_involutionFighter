@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using Logger = YIUIFramework.Logger;
 
-namespace YIUIBind
+namespace YIUIFramework
 {
     public abstract partial class UIEventBind
     {

@@ -4,7 +4,7 @@ namespace YIUIFramework
 {
     /// <summary>
     /// 红点系统 所有key枚举
-    /// 由YIUI工具自动创建 请勿手动修改
+    /// 由YIUI工具自动创建 请勿修改
     /// </summary>
     public enum ERedDotKeyType
     {

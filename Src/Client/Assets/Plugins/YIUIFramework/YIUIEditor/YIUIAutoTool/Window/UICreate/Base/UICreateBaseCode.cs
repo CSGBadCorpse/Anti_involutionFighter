@@ -17,7 +17,7 @@ namespace YIUIFramework.Editor
 
         public UICreateBaseCode(out bool result, string authorName, UICreateBaseData codeData) : base(authorName)
         {
-            var path     = $"{UIStaticHelper.UIGenerationPath}/{codeData.PkgName}/{codeData.ResName}Base.cs";
+            var path     = $"{UIStaticHelper.UIETComponentGenPath}/{codeData.PkgName}/{codeData.ResName}Base.cs";
             var template = $"{UIStaticHelper.UITemplatePath}/UICreateBaseTemplate.txt";
             CreateVo = new CreateVo(template, path);
 
@@ -27,7 +27,6 @@ namespace YIUIFramework.Editor
             ValueDic["Namespace"]     = codeData.Namespace;
             ValueDic["PkgName"]       = codeData.PkgName;
             ValueDic["ResName"]       = codeData.ResName;
-            ValueDic["BaseClass"]     = codeData.BaseClass;
             ValueDic["Variables"]     = codeData.Variables;
             ValueDic["UIBind"]        = codeData.UIBind;
             ValueDic["UIUnBind"]      = codeData.UIUnBind;

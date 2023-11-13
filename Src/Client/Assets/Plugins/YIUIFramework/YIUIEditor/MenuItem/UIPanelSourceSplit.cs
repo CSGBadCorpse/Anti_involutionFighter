@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using YIUIBind;
+
 
 namespace YIUIFramework.Editor
 {

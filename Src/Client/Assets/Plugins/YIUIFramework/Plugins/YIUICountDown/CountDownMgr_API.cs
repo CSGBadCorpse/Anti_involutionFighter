@@ -93,7 +93,7 @@ namespace YIUIFramework
                         double        interval,
                         TimerCallback timerCallback,
                         bool          forever,
-                        bool          startCallback = false)
+                        bool          startCallback)
         {
             if (!TryAdd())
             {

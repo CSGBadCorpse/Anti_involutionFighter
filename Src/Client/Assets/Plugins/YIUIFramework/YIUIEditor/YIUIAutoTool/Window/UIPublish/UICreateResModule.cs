@@ -2,7 +2,7 @@
 
 using Sirenix.OdinInspector;
 using UnityEditor;
-using YIUIBind;
+
 
 namespace YIUIFramework.Editor
 {

@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using Logger = YIUIFramework.Logger;
 
-namespace YIUIBind
+namespace YIUIFramework
 {
     [InfoBox("提示: 可用事件参数 <参数1:string(输入的值)>")]
     [LabelText("输入栏<string> 结束时")]

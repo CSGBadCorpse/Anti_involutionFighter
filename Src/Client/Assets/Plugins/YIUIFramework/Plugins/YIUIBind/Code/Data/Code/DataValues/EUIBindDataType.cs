@@ -1,6 +1,6 @@
 using Sirenix.OdinInspector;
 
-namespace YIUIBind
+namespace YIUIFramework
 {
     [LabelText("类型")]
 

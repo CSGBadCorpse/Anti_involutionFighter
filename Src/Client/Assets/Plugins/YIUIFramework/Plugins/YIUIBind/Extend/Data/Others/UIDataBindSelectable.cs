@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-namespace YIUIBind
+namespace YIUIFramework
 {
     [DetailedInfoBox("可选择的Toggle/Button ...类的",
         @"改变是否可触摸 Toggle / inputField / button / dropdown 这些都可以用 

@@ -1,52 +1,14 @@
-﻿using System;
-using YIUIBind;
-using YIUIFramework;
-using UnityEngine;
-using System.Collections.Generic;
-using Cysharp.Threading.Tasks;
+﻿using YIUIFramework;
 
-namespace ${Namespace}.${PkgName}
+namespace ${Namespace}
 {
     /// <summary>
     /// Author  ${Author}
     /// Date    ${CreateDate}
+    /// Desc
     /// </summary>
-    public sealed partial class ${ResName}:${ResName}Base
+    public partial class ${ResName}Component : Entity
     {
-    
-        #region 生命周期
-        
-        protected override void Initialize()
-        {
-            Debug.Log($"${ResName} Initialize");
-        }
-
-        protected override void Start()
-        {
-            Debug.Log($"${ResName} Start");
-        }
-
-        protected override void OnEnable()
-        {
-            Debug.Log($"${ResName} OnEnable");
-        }
-
-        protected override void OnDisable()
-        {
-            Debug.Log($"${ResName} OnDisable");
-        }
-
-        protected override void OnDestroy()
-        {
-            Debug.Log($"${ResName} OnDestroy");
-        }
-
-        #endregion
-
-        #region Event开始
-
-
-        #endregion Event结束
 
     }
 }

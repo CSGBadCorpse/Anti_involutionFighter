@@ -1,6 +1,6 @@
 ﻿using Sirenix.OdinInspector;
 
-namespace YIUIBind
+namespace YIUIFramework
 {
     /// <summary>
     /// 布尔 逻辑  或 与 非s

@@ -1,64 +1,45 @@
 ﻿using System;
-using YIUIBind;
 using YIUIFramework;
 using UnityEngine;
 using System.Collections.Generic;
-using Cysharp.Threading.Tasks;
 
-namespace ${Namespace}.${PkgName}
+namespace ${Namespace}
 {
     /// <summary>
     /// Author  ${Author}
     /// Date    ${CreateDate}
+    /// Desc
     /// </summary>
+    [YIUI(typeof(${ResName}Component))]
     public sealed partial class ${ResName}:${ResName}Base
     {
-    
-        #region 生命周期
-        
-        protected override void Initialize()
-        {
-            Debug.Log($"${ResName} Initialize");
-        }
-
-        protected override void Start()
-        {
-            Debug.Log($"${ResName} Start");
-        }
-
-        protected override void OnEnable()
-        {
-            Debug.Log($"${ResName} OnEnable");
-        }
-
-        protected override void OnDisable()
-        {
-            Debug.Log($"${ResName} OnDisable");
-        }
-
-        protected override void OnDestroy()
-        {
-            Debug.Log($"${ResName} OnDestroy");
-        }
-
-        protected override async UniTask<bool> OnOpen()
-        {
-            await UniTask.CompletedTask;
-            Debug.Log($"${ResName} OnOpen");
-            return true;
-        }
-
-        protected override async UniTask<bool> OnOpen(ParamVo param)
-        {
-            return await base.OnOpen(param);
-        }
-        
-        #endregion
-
-        #region Event开始
-
-
-        #endregion Event结束
-
+        #region YIUIEvent开始
+        #endregion YIUIEvent结束
     }
+    
+    #region DefaultComponentSystem开始
+    
+    public static partial class ${ResName}ComponentSystem
+    {
+        [ObjectSystem]
+        public class ${ResName}ComponentYIUIAwakeSystem: AwakeSystem<${ResName}Component,UIBase>
+        {
+            protected override void Awake(${ResName}Component self, UIBase uiBase)
+            {
+                self.UI             = (${ResName})uiBase;
+                self.UI.UIComponent = self;
+            }
+        }
+        
+        [ObjectSystem]
+        public class ${ResName}ComponentYIUIDestroySystem: DestroySystem<${ResName}Component>
+        {
+            protected override void Destroy(${ResName}Component self)
+            {
+                self.UI.EntityOnDestroy();
+            }
+        }
+    }
+    
+    #endregion DefaultComponentSystem结束
 }

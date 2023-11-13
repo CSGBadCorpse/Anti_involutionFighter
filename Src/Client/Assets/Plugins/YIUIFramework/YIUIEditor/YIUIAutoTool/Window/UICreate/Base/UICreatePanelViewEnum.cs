@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
-using YIUIBind;
+
 
 namespace YIUIFramework.Editor
 {
@@ -26,6 +26,7 @@ namespace YIUIFramework.Editor
             if (!splitData.CreatePanelViewEnum) return;
             var index = 1;
 
+            sb.Append("    /// <summary>\n    /// 由YIUI工具自动创建 请勿修改\n    /// 当前Panel所有可用view枚举\n    /// </summary>\n");
             sb.AppendFormat("    public enum E{0}ViewEnum\r\n    {{\r\n", self.name);
             AddViewEnum(splitData.AllCommonView, sb, ref index);
             AddViewEnum(splitData.AllCreateView, sb, ref index);
@@ -38,7 +39,7 @@ namespace YIUIFramework.Editor
             foreach (var viewParent in viewList)
             {
                 var viewName = viewParent.name.Replace(UIStaticHelper.UIParentName, "");
-                sb.AppendFormat("        {0} = {1},\r\n", viewName, index);
+                sb.AppendFormat("        {0} = {1},\r\n", $"{viewName}", index);
                 index++;
             }
         }

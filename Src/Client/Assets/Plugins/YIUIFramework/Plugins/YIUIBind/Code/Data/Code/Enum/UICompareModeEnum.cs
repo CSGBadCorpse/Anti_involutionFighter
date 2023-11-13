@@ -1,6 +1,6 @@
 ﻿using Sirenix.OdinInspector;
 
-namespace YIUIBind
+namespace YIUIFramework
 {
     /// <summary>
     /// 比较运算枚举y

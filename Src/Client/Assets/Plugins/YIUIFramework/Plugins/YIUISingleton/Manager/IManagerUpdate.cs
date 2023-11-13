@@ -1,10 +1,10 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using ET;
 
 namespace YIUIFramework
 {
     public interface IManagerAsyncInit : IManager
     {
-        UniTask<bool> ManagerAsyncInit();
+        ETTask<bool> ManagerAsyncInit();
     }
     
     public interface IManagerUpdate : IManager

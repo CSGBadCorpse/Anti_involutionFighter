@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Cysharp.Threading.Tasks;
+using ET;
 using UnityEngine;
 
 namespace YIUIFramework
@@ -18,7 +18,7 @@ namespace YIUIFramework
         /// <summary>
         /// 加载key
         /// </summary>
-        private async UniTask<bool> LoadKeyAsset()
+        private async ETTask<bool> LoadKeyAsset()
         {
             m_RedDotKeyAsset = await YIUILoadHelper.LoadAssetAsync<RedDotKeyAsset>(RedDotKeyAssetName);
 

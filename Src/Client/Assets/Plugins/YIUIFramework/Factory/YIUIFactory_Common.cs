@@ -5,7 +5,7 @@
 //------------------------------------------------------------
 
 using UnityEngine;
-using Cysharp.Threading.Tasks;
+using ET;
 
 namespace YIUIFramework
 {
@@ -29,7 +29,7 @@ namespace YIUIFramework
             return obj;
         }
 
-        public static async UniTask<GameObject> InstantiateGameObjectAsync(string pkgName, string resName)
+        public static async ETTask<GameObject> InstantiateGameObjectAsync(string pkgName, string resName)
         {
             var obj = await YIUILoadHelper.LoadAssetAsyncInstantiate(pkgName, resName);
             if (obj == null)

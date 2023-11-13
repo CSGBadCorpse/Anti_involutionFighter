@@ -6,7 +6,7 @@ using I2.Loc;
 using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
-using YIUIBind;
+
 
 namespace YIUIFramework.Editor
 {

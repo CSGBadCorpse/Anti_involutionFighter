@@ -141,7 +141,7 @@ namespace YIUIFramework
 
             target.localScale = Vector3.one;
 
-            target.localRotation = lookCamera ? lookCamera.transform.localRotation : Quaternion.identity;
+            target.localRotation = lookCamera? lookCamera.transform.localRotation : Quaternion.identity;
         }
     }
 }

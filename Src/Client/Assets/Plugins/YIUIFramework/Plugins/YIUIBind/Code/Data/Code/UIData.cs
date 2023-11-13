@@ -4,7 +4,7 @@ using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;
 
-namespace YIUIBind
+namespace YIUIFramework
 {
     /// <summary>
     /// 添加UIData前的准备数据

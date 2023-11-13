@@ -2,7 +2,7 @@ using System;
 using Sirenix.OdinInspector;
 using Logger = YIUIFramework.Logger;
 
-namespace YIUIBind
+namespace YIUIFramework
 {
     [Serializable]
     [HideLabel]

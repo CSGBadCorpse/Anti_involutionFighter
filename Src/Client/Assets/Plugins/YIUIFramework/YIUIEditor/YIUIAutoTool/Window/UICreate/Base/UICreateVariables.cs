@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
-using YIUIBind;
 using UnityEngine;
 
 namespace YIUIFramework.Editor
@@ -34,7 +33,7 @@ namespace YIUIFramework.Editor
                 if (string.IsNullOrEmpty(name)) continue;
                 var bindCom = value.Value;
                 if (bindCom == null) continue;
-                sb.AppendFormat("        public {0} {1} {{ get; private set; }}\r\n", bindCom.GetType(), name);
+                sb.AppendFormat("        public {0} {1};\r\n", bindCom.GetType(), name);
             }
         }
 
@@ -50,7 +49,7 @@ namespace YIUIFramework.Editor
                 var uiData    = value.Value;
                 var dataValue = uiData?.DataValue;
                 if (dataValue == null) continue;
-                sb.AppendFormat("        public {0} {1} {{ get; private set; }}\r\n", dataValue.GetType(), name);
+                sb.AppendFormat("        public {0} {1};\r\n", dataValue.GetType(), name);
             }
         }
 
@@ -65,9 +64,9 @@ namespace YIUIFramework.Editor
                 if (string.IsNullOrEmpty(name)) continue;
                 var uiEventBase = value.Value;
                 if (uiEventBase == null) continue;
-                sb.AppendFormat("        protected {0} {1} {{ get; private set; }}\r\n", uiEventBase.GetEventType(),
+                sb.AppendFormat("        public {0} {1};\r\n", uiEventBase.GetEventType(),
                     name);
-                sb.AppendFormat("        protected {0} {1} {{ get; private set; }}\r\n",
+                sb.AppendFormat("        public {0} {1};\r\n",
                     uiEventBase.GetEventHandleType(), $"{name}Handle");
             }
         }
@@ -93,8 +92,8 @@ namespace YIUIFramework.Editor
                 }
 
                 existName.Add(newName);
-                sb.AppendFormat("        public {0} {1} {{ get; private set; }}\r\n",
-                    $"{UIStaticHelper.UINamespace}.{pkgName}.{resName}", newName);
+                sb.AppendFormat("        public {0} {1};\r\n",                
+                    $"{UIStaticHelper.UINamespace}.{resName}Component", newName);
             }
         }
 
@@ -116,31 +115,38 @@ namespace YIUIFramework.Editor
         {
             switch (self.UICodeType)
             {
-                case EUICodeType.Component:
+                case EUICodeType.Common:
+                    sb.AppendFormat("        public YIUIComponent UIBase;\r\n");
                     return;
                 case EUICodeType.Panel:
-                    sb.AppendFormat("        public override EWindowOption WindowOption => EWindowOption.{0};\r\n",
+                    sb.AppendFormat("        public YIUIComponent UIBase;\r\n");
+                    sb.AppendFormat("        public YIUIWindowComponent UIWindow;\r\n");
+                    sb.AppendFormat("        public YIUIPanelComponent UIPanel;\r\n");
+                    /*sb.AppendFormat("        public EWindowOption WindowOption = EWindowOption.{0};\r\n",
                         self.WindowOption.ToString().Replace(", ", "|EWindowOption."));
-                    sb.AppendFormat("        public override EPanelLayer Layer => EPanelLayer.{0};\r\n",
+                    sb.AppendFormat("        public EPanelLayer Layer = EPanelLayer.{0};\r\n",
                         self.PanelLayer);
-                    sb.AppendFormat("        public override EPanelOption PanelOption => EPanelOption.{0};\r\n",
+                    sb.AppendFormat("        public EPanelOption PanelOption = EPanelOption.{0};\r\n",
                         self.PanelOption.ToString().Replace(", ", "|EPanelOption."));
                     sb.AppendFormat(
-                        "        public override EPanelStackOption StackOption => EPanelStackOption.{0};\r\n",
+                        "        public EPanelStackOption StackOption = EPanelStackOption.{0};\r\n",
                         self.PanelStackOption);
-                    sb.AppendFormat("        public override int Priority => {0};\r\n", self.Priority);
+                    sb.AppendFormat("        public int Priority = {0};\r\n", self.Priority);
                     if (self.PanelOption.HasFlag(EPanelOption.TimeCache))
-                        sb.AppendFormat("        protected override float CachePanelTime => {0};\r\n\r\n",
-                            self.CachePanelTime);
+                        sb.AppendFormat("        public float CachePanelTime = {0};\r\n\r\n",
+                            self.CachePanelTime);*/
                     break;
                 case EUICodeType.View:
-                    sb.AppendFormat("        public override EWindowOption WindowOption => EWindowOption.{0};\r\n",
+                    sb.AppendFormat("        public YIUIComponent UIBase;\r\n");
+                    sb.AppendFormat("        public YIUIWindowComponent UIWindow;\r\n");
+                    sb.AppendFormat("        public YIUIViewComponent UIView;\r\n");
+                    /*sb.AppendFormat("        public EWindowOption WindowOption = EWindowOption.{0};\r\n",
                         self.WindowOption.ToString().Replace(", ", "|EWindowOption."));
                     sb.AppendFormat(
-                        "        public override EViewWindowType ViewWindowType => EViewWindowType.{0};\r\n",
+                        "        public EViewWindowType ViewWindowType = EViewWindowType.{0};\r\n",
                         self.ViewWindowType);
-                    sb.AppendFormat("        public override EViewStackOption StackOption => EViewStackOption.{0};\r\n",
-                        self.ViewStackOption);
+                    sb.AppendFormat("        public EViewStackOption StackOption = EViewStackOption.{0};\r\n",
+                        self.ViewStackOption);*/
                     break;
                 default:
                     Debug.LogError($"新增类型未实现 {self.UICodeType}");

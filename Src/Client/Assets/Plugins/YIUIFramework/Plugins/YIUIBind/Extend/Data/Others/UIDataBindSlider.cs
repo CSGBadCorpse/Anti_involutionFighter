@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-namespace YIUIBind
+namespace YIUIFramework
 {
     [LabelText("滑动动画")]
     internal enum ETweenType

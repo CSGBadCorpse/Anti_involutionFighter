@@ -1,11 +1,11 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using ET;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 using YIUIFramework;
 using Logger = YIUIFramework.Logger;
 
-namespace YIUIBind
+namespace YIUIFramework
 {
     [RequireComponent(typeof(Image))]
     [LabelText("Image 图片")]
@@ -81,16 +81,17 @@ namespace YIUIBind
                 return;
             }
 
-            ChangeSprite(dataValue).Forget();
+            ChangeSprite(dataValue).Coroutine();
         }
 
-        private async UniTaskVoid ChangeSprite(string resName)
+        private async ETTask ChangeSprite(string resName)
         {
             ReleaseLastSprite();
             
             if (!YIUILoadHelper.VerifyAssetValidity(resName))
             {
                 Logger.LogError($"没有这个资源 图片无法加载 请检查 {resName}");
+                SetEnabled(false);
                 return;
             }
             

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Logger = YIUIFramework.Logger;
 
-namespace YIUIBind
+namespace YIUIFramework
 {
     public static class UIEventBaseHelper
     {

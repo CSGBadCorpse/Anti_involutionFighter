@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using ET.Client;
 using UnityEngine;
 
 namespace YIUIFramework
@@ -18,21 +19,41 @@ namespace YIUIFramework
             RefreshCells();
         }
 
+        //刷新时默认选中某个索引数据
+        //注意这里相当于+=操作 如果你会频繁调用这个方法
+        //又想每次刷新选中不同的索引
+        //那么你应该先自行调用一次 ClearSelect
+        public void SetDataRefresh(IList<TData> data, int index)
+        {
+            SetDefaultSelect(index);
+            SetDataRefresh(data);
+        }
+
+        //同上 请看注释 注意使用方式
+        public void SetDataRefresh(IList<TData> data, List<int> index)
+        {
+            SetDefaultSelect(index);
+            SetDataRefresh(data);
+        }
+
         //如果 < 0 则表示这个对象在对象池里
         public int GetItemIndex(TItemRenderer item)
         {
-            return GetItemIndex(item.OwnerRectTransform);
+            return GetItemIndex(item.GetParent<YIUIComponent>().OwnerRectTransform);
         }
 
         //只能获取当前可见的对象
-        public TItemRenderer GetItemByIndex(int index)
+        public TItemRenderer GetItemByIndex(int index, bool log = true)
         {
-            if (index < StartLine || index > EndLine) return null;
-            var childIndex = index - StartLine;
+            if (index < ItemStart || index >= ItemEnd) return null;
+            var childIndex = index - ItemStart;
             if (childIndex < 0 || childIndex >= Content.childCount)
             {
-                Debug.LogError(
-                    $"索引错误 请检查 index:{index} StartLine:{StartLine} childIndex:{childIndex} childCount:{Content.childCount}");
+                if (log)
+                {
+                    Debug.LogError($"索引错误 请检查 index:{index} Start:{ItemStart} childIndex:{childIndex} childCount:{Content.childCount}");
+                }
+
                 return null;
             }
 
@@ -52,7 +73,7 @@ namespace YIUIFramework
         {
             var listData = new List<TData>();
 
-            for (var i = StartLine; i <= EndLine; i++)
+            for (var i = ItemStart; i < ItemEnd; i++)
             {
                 listData.Add(m_Data[i]);
             }

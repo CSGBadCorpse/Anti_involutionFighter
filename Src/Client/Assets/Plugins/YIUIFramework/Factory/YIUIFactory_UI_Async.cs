@@ -5,64 +5,65 @@
 //------------------------------------------------------------
 
 using System;
+using ET;
+using ET.Client;
 using UnityEngine;
-using Cysharp.Threading.Tasks;
 
 namespace YIUIFramework
 {
     public static partial class YIUIFactory
     {
-        public static async UniTask<T> InstantiateAsync<T>(RectTransform parent = null) where T : UIBase
+        public static async ETTask<T> InstantiateAsync<T>(Entity parentEntity, RectTransform parent = null) where T : Entity
         {
-            var data = UIBindHelper.GetBindVoByType<T>();
+            var data = YIUIBindHelper.GetBindVoByType<T>();
             if (data == null) return null;
             var vo = data.Value;
 
-            return await InstantiateAsync<T>(vo, parent);
+            return await InstantiateAsync<T>(vo, parentEntity, parent);
         }
 
-        public static async UniTask<T> InstantiateAsync<T>(UIBindVo vo, RectTransform parent = null) where T : UIBase
+        public static async ETTask<T> InstantiateAsync<T>(YIUIBindVo vo, Entity parentEntity, RectTransform parent = null) where T : Entity
         {
-            var uiBase = await CreateAsync(vo);
-            SetParent(uiBase.OwnerRectTransform, parent ? parent : PanelMgr.Inst.UICache);
-            return (T)uiBase;
+            var uiCom = await CreateAsync(vo, parentEntity);
+            SetParent(uiCom.GetParent<YIUIComponent>().OwnerRectTransform, parent? parent : YIUIMgrComponent.Inst.UICache);
+            return (T)uiCom;
         }
 
-        public static async UniTask<UIBase> InstantiateAsync(UIBindVo vo, RectTransform parent = null)
+        public static async ETTask<Entity> InstantiateAsync(YIUIBindVo vo, Entity parentEntity, RectTransform parent = null)
         {
-            var uiBase = await CreateAsync(vo);
-            SetParent(uiBase.OwnerRectTransform, parent ? parent : PanelMgr.Inst.UICache);
-            return uiBase;
+            var uiCom = await CreateAsync(vo, parentEntity);
+            SetParent(uiCom.GetParent<YIUIComponent>().OwnerRectTransform, parent? parent : YIUIMgrComponent.Inst.UICache);
+            return uiCom;
         }
 
-        public static async UniTask<UIBase> InstantiateAsync(Type uiType, RectTransform parent = null)
+        public static async ETTask<Entity> InstantiateAsync(Type uiType, Entity parentEntity, RectTransform parent = null)
         {
-            var data = UIBindHelper.GetBindVoByType(uiType);
+            var data = YIUIBindHelper.GetBindVoByType(uiType);
             if (data == null) return null;
             var vo = data.Value;
 
-            return await InstantiateAsync(vo, parent);
+            return await InstantiateAsync(vo, parentEntity, parent);
         }
 
-        public static async UniTask<UIBase> InstantiateAsync(string        pkgName, string resName,
+        public static async ETTask<Entity> InstantiateAsync(string        pkgName, string resName, Entity parentEntity,
                                                              RectTransform parent = null)
         {
-            var data = UIBindHelper.GetBindVoByPath(pkgName, resName);
+            var data = YIUIBindHelper.GetBindVoByPath(pkgName, resName);
             if (data == null) return null;
             var vo = data.Value;
 
-            return await InstantiateAsync(vo, parent);
+            return await InstantiateAsync(vo, parentEntity, parent);
         }
 
-        internal static async UniTask<UIBase> CreatePanelAsync(PanelInfo panelInfo)
+        public static async ETTask<Entity> CreatePanelAsync(PanelInfo panelInfo, Entity parentEntity)
         {
-            var bingVo = UIBindHelper.GetBindVoByPath(panelInfo.PkgName, panelInfo.ResName);
+            var bingVo = YIUIBindHelper.GetBindVoByPath(panelInfo.PkgName, panelInfo.ResName);
             if (bingVo == null) return null;
-            var uiBase = await CreateAsync(bingVo.Value);
-            return uiBase;
+            var uiCom = await CreateAsync(bingVo.Value, parentEntity);
+            return uiCom;
         }
 
-        private static async UniTask<UIBase> CreateAsync(UIBindVo vo)
+        public static async ETTask<Entity> CreateAsync(YIUIBindVo vo, Entity parentEntity)
         {
             var obj = await YIUILoadHelper.LoadAssetAsyncInstantiate(vo.PkgName, vo.ResName);
             if (obj == null)
@@ -71,7 +72,7 @@ namespace YIUIFramework
                 return null;
             }
 
-            return CreateByObjVo(vo, obj);
+            return CreateByObjVo(vo, obj, parentEntity);
         }
     }
 }

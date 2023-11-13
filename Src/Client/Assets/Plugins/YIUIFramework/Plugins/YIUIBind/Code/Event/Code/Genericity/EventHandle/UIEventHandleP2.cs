@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using YIUIFramework;
 
-namespace YIUIBind
+namespace YIUIFramework
 {
     /// <summary>
     /// UI事件全局对象池

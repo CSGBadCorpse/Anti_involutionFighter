@@ -1,14 +1,13 @@
 ﻿#if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
-using YIUIBind;
 
 namespace YIUIFramework.Editor
 {
     public static class MenuItemYIUIComponent
     {
-        [MenuItem("GameObject/YIUI/Create UIComponent", false, 2)]
-        static void CreateYIUIComponent()
+        [MenuItem("GameObject/YIUI/Create UICommon", false, 2)]
+        static void CreateYIUICommon()
         {
             var activeObject = Selection.activeObject as GameObject;
             if (activeObject == null)
@@ -17,17 +16,17 @@ namespace YIUIFramework.Editor
                 return;
             }
 
-            //Component
-            var componentObject = new GameObject();
-            var viewRect        = componentObject.GetOrAddComponent<RectTransform>();
-            componentObject.GetOrAddComponent<CanvasRenderer>();
-            var cdeTable = componentObject.GetOrAddComponent<UIBindCDETable>();
-            cdeTable.UICodeType = EUICodeType.Component;
+            //Common
+            var commonObject = new GameObject();
+            var viewRect        = commonObject.GetOrAddComponent<RectTransform>();
+            commonObject.GetOrAddComponent<CanvasRenderer>();
+            var cdeTable = commonObject.GetOrAddComponent<UIBindCDETable>();
+            cdeTable.UICodeType = EUICodeType.Common;
             viewRect.SetParent(activeObject.transform, false);
 
 
-            componentObject.SetLayerRecursively(LayerMask.NameToLayer("UI"));
-            Selection.activeObject = componentObject;
+            commonObject.SetLayerRecursively(LayerMask.NameToLayer("UI"));
+            Selection.activeObject = commonObject;
         }
     }
 }

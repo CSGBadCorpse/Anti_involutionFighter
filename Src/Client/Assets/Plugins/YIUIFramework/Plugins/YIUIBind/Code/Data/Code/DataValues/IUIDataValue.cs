@@ -1,4 +1,4 @@
-namespace YIUIBind
+namespace YIUIFramework
 {
     public interface IUIDataValue<T>
     {

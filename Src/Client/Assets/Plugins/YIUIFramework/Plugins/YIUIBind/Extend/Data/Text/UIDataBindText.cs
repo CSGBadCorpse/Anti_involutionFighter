@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Logger = YIUIFramework.Logger;
 
-namespace YIUIBind
+namespace YIUIFramework
 {
     [RequireComponent(typeof(Text))]
     [LabelText("Text 文本")]

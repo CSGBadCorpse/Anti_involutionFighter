@@ -1,9 +1,7 @@
+#if UNITY_EDITOR
 using System;
 using System.Collections;
 using Sirenix.OdinInspector;
-using YIUIBind;
-using UnityEditor;
-#if UNITY_EDITOR
 using UnityEngine;
 
 namespace YIUIFramework.Editor
@@ -19,7 +17,7 @@ namespace YIUIFramework.Editor
         {
             if (!UIOperationHelper.CheckUIOperation()) return;
 
-            var codeData = GenCodeByType(typeof(UIBindProvider));
+            var codeData = GenCodeByType(typeof(YIUIBindProvider));
             if (codeData == null) return;
             new CreateUIBindProviderCode(out var result, YIUIAutoTool.Author, codeData);
 

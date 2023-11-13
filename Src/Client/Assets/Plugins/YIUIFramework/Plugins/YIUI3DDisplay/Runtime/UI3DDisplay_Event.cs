@@ -7,7 +7,6 @@ using Sirenix.OdinInspector;
 using System;
 using Sirenix.Serialization;
 using UnityEngine.Serialization;
-using YIUIBind;
 
 namespace YIUIFramework
 {
@@ -81,9 +80,8 @@ namespace YIUIFramework
                 m_DragRotation += deltaRot;
                 var showRotation = Quaternion.Euler(m_ShowRotation);
                 var showUp       = showRotation * Vector3.up;
-                showRotation *= Quaternion.AngleAxis(
-                    m_DragRotation, showUp);
-                dragTsf.rotation = showRotation;
+                showRotation     *= Quaternion.AngleAxis(m_DragRotation, showUp);
+                dragTsf.rotation =  showRotation;
             }
         }
 
@@ -97,7 +95,6 @@ namespace YIUIFramework
 
                 m_DragTarge = GetMultipleTargetByClick(m_DragRaycastHit.collider.gameObject);
             }
-
 
             if (m_OnClickEvent != null)
                 m_OnClickDownPos = eventData.position;
@@ -116,7 +113,7 @@ namespace YIUIFramework
                 return;
 
             var clickObj       = m_ClickRaycastHit.collider.gameObject;
-            var clickObjParent = m_MultipleTargetMode ? GetMultipleTargetByClick(clickObj) : m_ShowObject;
+            var clickObjParent = m_MultipleTargetMode? GetMultipleTargetByClick(clickObj) : m_ShowObject;
 
             try
             {

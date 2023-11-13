@@ -5,14 +5,14 @@
 //------------------------------------------------------------
 
 using System.Collections.Generic;
-using Cysharp.Threading.Tasks;
+using ET;
 using UnityEngine;
 
 namespace YIUIFramework
 {
     /// <summary>
     /// 倒计时管理器
-    /// 区别于Times
+    /// 区别于Times 个人认为更适合UI上的时间倒计时
     ///                            Times                   CountDown
     /// 回调频率                     不可改                     可改                        (虽然中途改频率这个事情很少)
     /// 如果暂停                中间丢失的时间就没了      中途丢失的时间会快速倒计时             (万一有需求 中间的各种计算就丢掉了)
@@ -21,11 +21,11 @@ namespace YIUIFramework
     /// 可提前结束                     否                         是                         (针对于 比如 匿名函数 等特殊情况)
     /// 回调参数            obj 但是麻烦 而且不可变           已过去时间/总时间                   (更适合于UI上的一些数字倒计时)
     /// 可循环                        否                          是                         (虽然0 都可以无限 但是万一要的是不是0的情况下循环呢 就得递归调自己吗)
-    /// 多重载                        否                          是 (满足各种需求)
+    /// 多重载                        否                          是                         (满足各种需求)
     /// 匿名函数                      否                          是                          (匿名函数也可以被暂停 移除等操作)
     /// ......
     /// </summary>
-    public partial class CountDownMgr : MgrSingleton<CountDownMgr>
+    public partial class CountDownMgr: MgrSingleton<CountDownMgr>
     {
         /// <summary>
         /// 回调方法
@@ -68,11 +68,11 @@ namespace YIUIFramework
         /// 当然已经存在的倒计时数量
         /// </summary>
         private int m_AtCount = 0;
-
-        protected override UniTask<bool> MgrAsyncInit()
+        
+        protected override async ETTask<bool> MgrAsyncInit()
         {
             Initialize();
-            return base.MgrAsyncInit();
+            return await base.MgrAsyncInit();
         }
 
         //初始化
@@ -82,14 +82,14 @@ namespace YIUIFramework
             m_RemoveGuid.Clear();
             m_ToAddCountDown.Clear();
             m_CallbackGuidDic.Clear();
-            UpdateAsync().Forget();
+            UpdateAsync().Coroutine();
         }
 
         //摧毁
         protected override void OnDispose()
         {
         }
-        
+
         //统一所有取时间都用这个 且方便修改
         private static float GetTime()
         {
@@ -102,13 +102,13 @@ namespace YIUIFramework
 
         //使用异步控制频率更新 并没有使用调度器
         //调度器是mono update 不需要这么高的频率
-        private async UniTaskVoid UpdateAsync()
+        private async ETTask UpdateAsync()
         {
             while (true)
             {
                 if (Disposed) return;
                 ManagerUpdate();
-                await UniTask.Delay(m_UpdataAsyncDelay);
+                await TimerComponent.Instance.WaitAsync(m_UpdataAsyncDelay);
             }
         }
 
@@ -231,7 +231,7 @@ namespace YIUIFramework
             RemoveByData(data);
             RefPool.Put(data);
             m_AtCount--;
-            
+
             return true;
         }
 

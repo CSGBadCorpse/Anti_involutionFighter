@@ -16,6 +16,8 @@ namespace YIUIFramework
         public int           EndLine                => Mathf.Min(StartLine + CurrentLines, TotalLines); //可见的最后一行
         public int           ContentConstraintCount => m_Owner.u_ContentConstraintCount;                //限制 行/列 数
         public float         ContentSpacing         => m_Owner.u_ContentSpacing;                        //间隔
+        public int           ItemStart              => m_Owner.u_ItemStart;                             //当前显示的第一个的Index                
+        public int           ItemEnd                => m_Owner.u_ItemEnd;                               //当前显示的最后一个index 被+1了注意                      
 
         //在开始时用startItem填充单元格，同时清除现有的单元格
         public void RefillCells(int startItem = 0, bool fillViewRect = false, float contentOffset = 0)

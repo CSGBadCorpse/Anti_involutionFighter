@@ -135,7 +135,7 @@ namespace I2.Loc
                 { }
             }*/
 			
-			var path = $"{YIUIFramework.UIStaticHelper.UIGenerationPath}/I2Localization";
+			var path = $"{YIUIFramework.UIStaticHelper.UIETComponentGenPath}/I2Localization";
 			if (!Directory.Exists(path))
 				Directory.CreateDirectory(path);
 			

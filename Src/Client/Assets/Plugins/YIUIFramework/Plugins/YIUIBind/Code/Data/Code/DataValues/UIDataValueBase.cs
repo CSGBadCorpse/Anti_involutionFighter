@@ -4,7 +4,7 @@ using Sirenix.Serialization;
 using UnityEngine;
 using Logger = YIUIFramework.Logger;
 
-namespace YIUIBind
+namespace YIUIFramework
 {
     /// <summary>
     /// 数据基类

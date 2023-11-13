@@ -1,7 +1,7 @@
 using System;
 using Sirenix.OdinInspector;
 
-namespace YIUIBind
+namespace YIUIFramework
 {
     [HideLabel]
     [HideReferenceObjectPicker]

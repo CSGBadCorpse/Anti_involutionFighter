@@ -8,7 +8,7 @@ using UnityEngine;
 using YIUIFramework;
 using Logger = YIUIFramework.Logger;
 
-namespace YIUIBind
+namespace YIUIFramework
 {
     //Editor
     public sealed partial class UIBindComponentTable

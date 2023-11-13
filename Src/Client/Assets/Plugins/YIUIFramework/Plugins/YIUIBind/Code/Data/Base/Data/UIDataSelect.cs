@@ -2,7 +2,7 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace YIUIBind
+namespace YIUIFramework
 {
     /// <summary>
     /// 数据选择数据展示

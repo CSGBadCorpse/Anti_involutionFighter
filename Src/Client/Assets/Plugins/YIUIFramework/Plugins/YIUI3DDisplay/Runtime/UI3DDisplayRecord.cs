@@ -5,7 +5,7 @@ namespace YIUIFramework
     /// <summary>
     /// 用于记录原始层，并在渲染器中可见。
     /// </summary>
-    public sealed class UI3DDisplayRecord : MonoBehaviour
+    public sealed class UI3DDisplayRecord: MonoBehaviour
     {
         private int               m_Layer;
         private bool              m_Visible;

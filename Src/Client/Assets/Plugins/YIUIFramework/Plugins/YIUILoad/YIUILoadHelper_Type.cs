@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using Object = UnityEngine.Object;
-using Cysharp.Threading.Tasks;
+using ET;
 
 namespace YIUIFramework
 {
@@ -37,7 +37,7 @@ namespace YIUIFramework
             return obj;
         }
 
-        internal static async UniTask<Object> LoadAssetAsync(string pkgName, string resName, Type assetType)
+        internal static async ETTask<Object> LoadAssetAsync(string pkgName, string resName, Type assetType)
         {
             var load    = LoadHelper.GetLoad(pkgName, resName);
             var loadObj = load.Object;
@@ -49,7 +49,7 @@ namespace YIUIFramework
 
             if (load.WaitAsync)
             {
-                await UniTask.WaitUntil(() => !load.WaitAsync);
+                await ETTaskHelperExtend.WaitUntil(() => !load.WaitAsync);
 
                 loadObj = load.Object;
                 if (loadObj != null)
@@ -76,7 +76,7 @@ namespace YIUIFramework
             {
                 return null;
             }
-            
+
             load.ResetHandle(obj, hashCode);
             load.AddRefCount();
             load.SetWaitAsync(false);
@@ -85,14 +85,14 @@ namespace YIUIFramework
 
         internal static void LoadAssetAsync(string pkgName, string resName, Type assetType, Action<Object> action)
         {
-            LoadAssetAsyncAction(pkgName, resName, assetType, action).Forget();
+            LoadAssetAsyncAction(pkgName, resName, assetType, action).Coroutine();
         }
 
-        private static async UniTaskVoid LoadAssetAsyncAction(
-            string         pkgName,
-            string         resName,
-            Type           assetType,
-            Action<Object> action)
+        private static async ETTask LoadAssetAsyncAction(
+        string         pkgName,
+        string         resName,
+        Type           assetType,
+        Action<Object> action)
         {
             var asset = await LoadAssetAsync(pkgName, resName, assetType);
             if (asset == null)

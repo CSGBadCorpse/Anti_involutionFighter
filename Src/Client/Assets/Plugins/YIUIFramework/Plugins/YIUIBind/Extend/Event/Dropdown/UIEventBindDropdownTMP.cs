@@ -5,7 +5,7 @@ using UnityEngine;
 using TMPro;
 using Logger = YIUIFramework.Logger;
 
-namespace YIUIBind
+namespace YIUIFramework
 {
     [InfoBox("提示: 可用事件参数 <参数1:int(下拉菜单被选择的索引值)>")]
     [LabelText("下拉菜单<int>")]

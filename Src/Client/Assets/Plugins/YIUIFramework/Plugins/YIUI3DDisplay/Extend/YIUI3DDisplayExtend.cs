@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using YIUIBind;
 
 namespace YIUIFramework
 {
@@ -15,7 +14,7 @@ namespace YIUIFramework
         private Dictionary<string, GameObject> m_ObjPool = new Dictionary<string, GameObject>();
 
         private Dictionary<GameObject, Dictionary<string, Camera>> m_CameraPool =
-            new Dictionary<GameObject, Dictionary<string, Camera>>();
+                new Dictionary<GameObject, Dictionary<string, Camera>>();
 
         private YIUI3DDisplayExtend()
         {
@@ -26,7 +25,7 @@ namespace YIUIFramework
             m_UI3DDisplay = ui3DDisplay;
         }
 
-        public GameObject Show(string resName, string cameraName = "Camera")
+        public GameObject Show(string resName, string cameraName = "")
         {
             if (m_UI3DDisplay == null)
             {
@@ -36,7 +35,7 @@ namespace YIUIFramework
 
             var obj = GetDisplayObject(resName);
             if (obj == null) return null;
-            var camera = GetCamera(obj, cameraName);
+            var camera = string.IsNullOrEmpty(cameraName)? m_UI3DDisplay.ShowCamera : GetCamera(obj, cameraName);
             if (camera == null) return obj;
             m_UI3DDisplay.Show(obj, camera);
             return obj;

@@ -2,7 +2,6 @@
 using Object = UnityEngine.Object;
 #if UNITY_EDITOR
 using UnityEditor;
-using UnityEngine;
 #endif
 
 namespace YIUIFramework
@@ -23,6 +22,50 @@ namespace YIUIFramework
             #endif
         }
 
+        /// <summary>
+        /// 提示 同时Log
+        /// </summary>
+        public static void ShowLog(string message)
+        {
+            #if UNITY_EDITOR
+            Show(message);
+            Logger.Log(message);
+            #endif
+        }
+
+        /// <summary>
+        /// 提示 同时Log
+        /// </summary>
+        public static void ShowLog(object message)
+        {
+            #if UNITY_EDITOR
+            Show(message.ToString());
+            Logger.Log(message);
+            #endif
+        }
+        
+        /// <summary>
+        /// 提示 同时Warning
+        /// </summary>
+        public static void ShowWarning(string message)
+        {
+            #if UNITY_EDITOR
+            Show(message);
+            Logger.LogWarning(message);
+            #endif
+        }
+
+        /// <summary>
+        /// 提示 同时Warning
+        /// </summary>
+        public static void ShowWarning(object message)
+        {
+            #if UNITY_EDITOR
+            Show(message.ToString());
+            Logger.LogWarning(message);
+            #endif
+        }
+        
         /// <summary>
         /// 提示 同时error 报错
         /// </summary>

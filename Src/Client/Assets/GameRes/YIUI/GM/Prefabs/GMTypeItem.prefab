@@ -38,6 +38,7 @@ RectTransform:
   - {fileID: 6479608389343431508}
   - {fileID: 4083819358848103491}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -111,7 +112,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 689655610369321955}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76af6b314c984a70bd77fd9c0d998f89, type: 3}
+  m_Script: {fileID: 11500000, guid: 285d8efe639b7f941ab7df09e14390a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
@@ -641,6 +642,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4202988165121193808}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -840,6 +842,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4202988165121193808}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -877,8 +880,7 @@ MonoBehaviour:
   m_text: "\u540D\u79F0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0ba3ada64f6d6cb40be5ed1560038ed3, type: 2}
-  m_sharedMaterial: {fileID: 8809470712117131071, guid: 0ba3ada64f6d6cb40be5ed1560038ed3,
-    type: 2}
+  m_sharedMaterial: {fileID: 3105410610807075551, guid: 0ba3ada64f6d6cb40be5ed1560038ed3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1128,6 +1130,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4202988165121193808}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

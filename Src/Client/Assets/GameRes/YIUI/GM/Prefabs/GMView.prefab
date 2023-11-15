@@ -33,6 +33,7 @@ RectTransform:
   - {fileID: 1809565177352657351}
   - {fileID: 160136787788000233}
   m_Father: {fileID: 1625685019965489211}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -115,6 +116,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7251776897102318257}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -203,6 +205,7 @@ RectTransform:
   m_Children:
   - {fileID: 9145883316317718970}
   m_Father: {fileID: 1625685019965489211}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -415,6 +418,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1625685019965489211}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -478,6 +482,7 @@ RectTransform:
   m_Children:
   - {fileID: 2359080902958345966}
   m_Father: {fileID: 5205198328803995870}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -566,6 +571,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5205198328803995870}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -611,6 +617,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1625685019965489211}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -685,6 +692,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5871614705660204055}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -731,6 +739,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 160136787788000233}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -823,6 +832,7 @@ RectTransform:
   - {fileID: 5205198328803995870}
   - {fileID: 7132820650690951815}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -846,7 +856,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6101961607973475274}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76af6b314c984a70bd77fd9c0d998f89, type: 3}
+  m_Script: {fileID: 11500000, guid: 285d8efe639b7f941ab7df09e14390a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
@@ -960,12 +970,12 @@ MonoBehaviour:
   PkgName: GM
   ResName: GMView
   UICodeType: 1
-  WindowOption: 123904
+  WindowOption: 0
   PanelLayer: 3
   PanelOption: 0
   PanelStackOption: 2
   ViewWindowType: 0
-  ViewStackOption: 0
+  ViewStackOption: 2
   CachePanelTime: 10
   Priority: 0
 --- !u!114 &4697457778055108537
@@ -1262,6 +1272,7 @@ RectTransform:
   m_Children:
   - {fileID: 9025220468659699665}
   m_Father: {fileID: 5871614705660204055}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1353,6 +1364,7 @@ RectTransform:
   - {fileID: 8945637858766059697}
   - {fileID: 7251776897102318257}
   m_Father: {fileID: 1625685019965489211}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
@@ -1434,6 +1446,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7132820650690951815}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1471,8 +1484,7 @@ MonoBehaviour:
   m_text: X
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0ba3ada64f6d6cb40be5ed1560038ed3, type: 2}
-  m_sharedMaterial: {fileID: 8809470712117131071, guid: 0ba3ada64f6d6cb40be5ed1560038ed3,
-    type: 2}
+  m_sharedMaterial: {fileID: 3105410610807075551, guid: 0ba3ada64f6d6cb40be5ed1560038ed3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

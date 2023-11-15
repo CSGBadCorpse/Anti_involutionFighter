@@ -29,6 +29,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6084129000132902650}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -64,6 +65,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6084129000132902650}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -101,6 +103,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6084129000132902650}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -165,6 +168,7 @@ RectTransform:
   - {fileID: 3689684314457740241}
   - {fileID: 4480957870864111742}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -188,16 +192,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7938609600928646744}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76af6b314c984a70bd77fd9c0d998f89, type: 3}
+  m_Script: {fileID: 11500000, guid: 285d8efe639b7f941ab7df09e14390a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 7938609600928646744}
-    - {fileID: 3689684314457740241}
-    - {fileID: 4480957870864111742}
+    ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -238,16 +239,16 @@ MonoBehaviour:
       Data: 
     - Name: IsSplitData
       Entry: 5
-      Data: true
+      Data: false
     - Name: PanelSplitData
       Entry: 7
       Data: 3|YIUIFramework.UIPanelSplitData, YIUIFramework
     - Name: Panel
-      Entry: 10
-      Data: 0
+      Entry: 6
+      Data: 
     - Name: AllViewParent
-      Entry: 10
-      Data: 1
+      Entry: 6
+      Data: 
     - Name: AllCommonView
       Entry: 7
       Data: 4|System.Collections.Generic.List`1[[UnityEngine.RectTransform, UnityEngine.CoreModule]],
@@ -275,8 +276,8 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: AllPopupViewParent
-      Entry: 10
-      Data: 2
+      Entry: 6
+      Data: 
     - Name: AllPopupView
       Entry: 7
       Data: 6|System.Collections.Generic.List`1[[UnityEngine.RectTransform, UnityEngine.CoreModule]],

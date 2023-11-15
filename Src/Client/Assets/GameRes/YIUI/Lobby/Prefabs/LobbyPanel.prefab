@@ -35,6 +35,7 @@ RectTransform:
   - {fileID: 2003696664191729595}
   - {fileID: 463090141768562902}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -58,16 +59,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 66388047756517120}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76af6b314c984a70bd77fd9c0d998f89, type: 3}
+  m_Script: {fileID: 11500000, guid: 285d8efe639b7f941ab7df09e14390a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 66388047756517120}
-    - {fileID: 2003696664191729595}
-    - {fileID: 463090141768562902}
+    ReferencedUnityObjects: []
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -113,11 +111,11 @@ MonoBehaviour:
       Entry: 7
       Data: 3|YIUIFramework.UIPanelSplitData, YIUIFramework
     - Name: Panel
-      Entry: 10
-      Data: 0
+      Entry: 6
+      Data: 
     - Name: AllViewParent
-      Entry: 10
-      Data: 1
+      Entry: 6
+      Data: 
     - Name: AllCommonView
       Entry: 7
       Data: 4|System.Collections.Generic.List`1[[UnityEngine.RectTransform, UnityEngine.CoreModule]],
@@ -145,8 +143,8 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: AllPopupViewParent
-      Entry: 10
-      Data: 2
+      Entry: 6
+      Data: 
     - Name: AllPopupView
       Entry: 7
       Data: 6|System.Collections.Generic.List`1[[UnityEngine.RectTransform, UnityEngine.CoreModule]],
@@ -167,8 +165,8 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: PanelSplitEditorShowData
-      Entry: 9
-      Data: 3
+      Entry: 6
+      Data: 
   ComponentTable: {fileID: 0}
   DataTable: {fileID: 0}
   EventTable: {fileID: 6169431036965684871}
@@ -177,7 +175,7 @@ MonoBehaviour:
   UICodeType: 0
   WindowOption: 0
   PanelLayer: 3
-  PanelOption: 4
+  PanelOption: 0
   PanelStackOption: 2
   ViewWindowType: 0
   ViewStackOption: 2
@@ -368,6 +366,7 @@ RectTransform:
   m_Children:
   - {fileID: 4426522357574517172}
   m_Father: {fileID: 3509174235810677687}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -405,6 +404,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8088438112272717600}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -485,6 +485,7 @@ RectTransform:
   m_Children:
   - {fileID: 8088438112272717600}
   m_Father: {fileID: 2003696664191729595}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -560,6 +561,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3509174235810677687}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -619,6 +621,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3509174235810677687}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -660,6 +663,7 @@ RectTransform:
   m_Children:
   - {fileID: 3157439243849085410}
   m_Father: {fileID: 4426522357574517172}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

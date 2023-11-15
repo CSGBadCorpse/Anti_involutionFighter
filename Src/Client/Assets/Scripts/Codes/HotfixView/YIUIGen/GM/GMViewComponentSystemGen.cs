@@ -26,9 +26,9 @@ namespace ET.Client
             self.UIBase = self.GetParent<YIUIComponent>();
             self.UIWindow = self.UIBase.GetComponent<YIUIWindowComponent>();
             self.UIView = self.UIBase.GetComponent<YIUIViewComponent>();
-            self.UIWindow.WindowOption = EWindowOption.BanTween|EWindowOption.BanAwaitOpenTween|EWindowOption.BanAwaitCloseTween|EWindowOption.SkipOtherOpenTween|EWindowOption.SkipOtherCloseTween;
+            self.UIWindow.WindowOption = EWindowOption.None;
             self.UIView.ViewWindowType = EViewWindowType.View;
-            self.UIView.StackOption = EViewStackOption.None;
+            self.UIView.StackOption = EViewStackOption.VisibleTween;
 
             self.u_ComGMTypeLoop = self.UIBase.ComponentTable.FindComponent<UnityEngine.UI.LoopVerticalScrollRect>("u_ComGMTypeLoop");
             self.u_ComGMCommandLoop = self.UIBase.ComponentTable.FindComponent<UnityEngine.UI.LoopVerticalScrollRect>("u_ComGMCommandLoop");

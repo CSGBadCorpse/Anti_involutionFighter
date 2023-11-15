@@ -28,10 +28,9 @@ namespace ET.Client
             self.UIPanel = self.UIBase.GetComponent<YIUIPanelComponent>();
             self.UIWindow.WindowOption = EWindowOption.None;
             self.UIPanel.Layer = EPanelLayer.Panel;
-            self.UIPanel.PanelOption = EPanelOption.TimeCache;
+            self.UIPanel.PanelOption = EPanelOption.None;
             self.UIPanel.StackOption = EPanelStackOption.VisibleTween;
             self.UIPanel.Priority = 0;
-            self.UIPanel.CachePanelTime = 10;
 
             self.u_EventEnter = self.UIBase.EventTable.FindEvent<UIEventP0>("u_EventEnter");
             self.u_EventEnterHandle = self.u_EventEnter.Add(self.OnEventEnterAction);

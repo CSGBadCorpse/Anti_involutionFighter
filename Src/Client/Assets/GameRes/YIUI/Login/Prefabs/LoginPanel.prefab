@@ -1590,8 +1590,8 @@ MonoBehaviour:
   ResName: LoginPanel
   UICodeType: 0
   WindowOption: 0
-  PanelLayer: 3
-  PanelOption: 0
+  PanelLayer: 2
+  PanelOption: 4
   PanelStackOption: 2
   ViewWindowType: 0
   ViewStackOption: 2

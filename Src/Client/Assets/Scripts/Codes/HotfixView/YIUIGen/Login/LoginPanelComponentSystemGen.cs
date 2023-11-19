@@ -27,10 +27,11 @@ namespace ET.Client
             self.UIWindow = self.UIBase.GetComponent<YIUIWindowComponent>();
             self.UIPanel = self.UIBase.GetComponent<YIUIPanelComponent>();
             self.UIWindow.WindowOption = EWindowOption.None;
-            self.UIPanel.Layer = EPanelLayer.Panel;
-            self.UIPanel.PanelOption = EPanelOption.None;
+            self.UIPanel.Layer = EPanelLayer.Popup;
+            self.UIPanel.PanelOption = EPanelOption.TimeCache;
             self.UIPanel.StackOption = EPanelStackOption.VisibleTween;
             self.UIPanel.Priority = 0;
+            self.UIPanel.CachePanelTime = 10;
 
             self.u_EventLogin = self.UIBase.EventTable.FindEvent<UIEventP0>("u_EventLogin");
             self.u_EventLoginHandle = self.u_EventLogin.Add(self.OnEventLoginAction);

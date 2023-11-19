@@ -174,14 +174,14 @@ MonoBehaviour:
   PkgName: GM
   ResName: GMPanel
   UICodeType: 0
-  WindowOption: 0
-  PanelLayer: 3
-  PanelOption: 0
-  PanelStackOption: 2
+  WindowOption: 123904
+  PanelLayer: 0
+  PanelOption: 4
+  PanelStackOption: 0
   ViewWindowType: 0
   ViewStackOption: 2
   CachePanelTime: 10
-  Priority: 0
+  Priority: 99999
 --- !u!114 &2427154724578611272
 MonoBehaviour:
   m_ObjectHideFlags: 0
